@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery Site Kit</title>
+<link rel="stylesheet" type="text/css" media="screen" href="demo.css">
+<link rel="stylesheet" type="text/css" media="screen" href="sitekit.css">
+<style>
+</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="jquery.sitekit-0.1.0.js"></script>
+<script>
+jQuery(function(){
+	$('button.run').on('click',function(){
+		$('ul.links a').socialButtons({
+			appendTo : 'div.social'
+		});
+		$(this).prop('disabled',true);
+	});
+});
+</script>
+</head>
+<body>
+	<div class="header">
+		<h1>jQuery Site Kit</h1>
+	</div>
+	<div class="main">
+		<h2>Social Buttons &gt; Demo</h2>
+		<div class="demo-section">
+			<button class="run">RUN</button>
+			<ul class="links">
+				<li>
+					<a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+					<div class="social"></div>
+				</li>
+				<li>
+					<a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+					<div class="social"></div>
+				</li>
+				<li>
+					<a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+					<div class="social"></div>
+				</li>
+				<li>
+					<a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+					<div class="social"></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery Site Kit</title>
+<link rel="stylesheet" type="text/css" media="screen" href="demo.css">
+<link rel="stylesheet" type="text/css" media="screen" href="sitekit.css">
+<style>
+div.search-area{
+	max-width:500px;
+}
+</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="jquery.sitekit-0.1.0.js"></script>
+<script>
+jQuery(function(){
+	$('button.run').on('click',function(){
+		$('div.search-area').googleCustomSearch({
+			cx : '003362715722494588328:pri8pejovqg'
+		});
+		$(this).prop('disabled',true);
+	});
+});
+</script>
+</head>
+<body>
+	<div class="header">
+		<h1>jQuery Site Kit</h1>
+	</div>
+	<div class="main">
+		<h2>Google Custom Search &gt; Demo</h2>
+		<div class="demo-section">
+			<button class="run">RUN</button><br/></br/>
+			<div class="search-area"></div>
+		</div>
+	</div>
+	<div class="footer">
+	</div>
+</body>
+</html>

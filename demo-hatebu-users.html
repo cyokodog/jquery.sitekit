@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery Site Kit</title>
+<link rel="stylesheet" type="text/css" media="screen" href="demo.css">
+<link rel="stylesheet" type="text/css" media="screen" href="sitekit.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="jquery.sitekit-0.1.0.js"></script>
+<script>
+jQuery(function(){
+	$('button.run').on('click',function(){
+		$('div.demo-section  a').hatebuUsers();
+		$(this).prop('disabled',true);
+	});
+});
+</script>
+</head>
+<body>
+	<div class="header">
+		<h1>jQuery Site Kit</h1>
+	</div>
+	<div class="main">
+		<h2>Hatebu Users &gt; Demo</h2>
+		<div class="demo-section">
+
+			<button class="run">RUN</button>
+			<ul class="links">
+				<li>
+					<a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+				</li>
+				<li>
+					<a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+				</li>
+				<li>
+					<a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+				</li>
+				<li>
+					<a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+				</li>
+			</ul>
+
+			<ul class="thum">
+				<li><a href="http://d.hatena.ne.jp/cyokodog/"><img title="Cyokodog :: Diary" src="http://capture.heartrails.com/120x90?http://d.hatena.ne.jp/cyokodog/" alt="http://d.hatena.ne.jp/cyokodog/" width="120" height="90" /></a></li>
+				<li><a href="http://cyokodog.tumblr.com/"><img title="CYOKOLOG" src="http://capture.heartrails.com/120x90/1369719270011?http://cyokodog.tumblr.com/" alt="http://cyokodog.tumblr.com/" width="120" height="90" /></a></li>
+			</ul>
+
+		</div>
+	</div>
+	<div class="footer">
+	</div>
+</body>
+</html>
