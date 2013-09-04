@@ -1,0 +1,57 @@
+/* social buttons */
+.social-buttons-container{
+	overflow:hidden;
+	line-height:.1;
+	height:20px;
+}
+.social-buttons-wrapper{
+padding-top:100px;
+	overflow:hidden;
+	float:left;
+}
+.social-buttons-hatebu{
+	margin-right:15px;
+	width: 52px;
+	background: url(sns_buttons.png) -276px -21px no-repeat;
+}
+.social-buttons-twitter{
+	margin-right:13px;
+	width: 86px;
+	background: url(sns_buttons.png) -408px -21px no-repeat;
+}
+.social-buttons-facebook{
+	margin-right:18px;
+	width: 97px;
+	background: url(sns_buttons.png) 0px -21px no-repeat;
+}
+.social-buttons-googleplus{
+	margin-right:18px;
+	width: 59px;
+	background: url(sns_buttons.png) -167px -21px no-repeat;
+}
+.social-buttons-large{
+	height:62px;
+}
+.social-buttons-large .social-buttons-wrapper{
+	padding-right:0;
+}
+.social-buttons-large .social-buttons-hatebu{
+	margin-right:5px;
+	width: 80px;
+	background: url(sns_buttons.png) -328px -1px no-repeat;
+}
+.social-buttons-large .social-buttons-twitter{
+	margin-right:7px;
+	width: 70px;
+	background: url(sns_buttons.png) -494px 0px no-repeat;
+}
+.social-buttons-large .social-buttons-facebook{
+	margin-right:6px;
+	width: 70px;
+	background: url(sns_buttons.png) -97px 0px no-repeat;
+}
+.social-buttons-large .social-buttons-googleplus{
+	margin-right:5px;
+	width: 50px;
+	background: url(sns_buttons.png) -226px -1px no-repeat;
+}

@@ -1,0 +1,10 @@
+/* External */
+a:visited.external,
+a.external{
+	color:#005533;
+}
+a:hover.external{
+	padding-right:14px;
+	background:url("external.gif") no-repeat right center #ffffcc;
+	color:#ff00ff;
+}

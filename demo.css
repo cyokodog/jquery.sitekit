@@ -44,7 +44,7 @@ h1,h2{
 	text-transform:uppercase;
 }
 h1{
-margin:0;
+	margin:0;
 	font-size:32px;
 }
 h2{
@@ -82,39 +82,3 @@ div.social{
 	padding:16px;
 	border:solid 1px #e0e0e0;
 }
-
-
-/*
-html{
-	background:#f0f0f0;
-}
-body{
-	margin:0 auto;
-	padding:16px 32px;
-	width:800px;
-xmin-height:2000px;
-	font-family:Meiryo;
-	font-size:13.5px;
-	background:#fff;
-}
-h1,h2{
-	margin:0 0 32px;
-	text-transform:uppercase;
-}
-h1,h2,h3{
-	font-weight:normal;
-	font-family:Impact;
-	color:#999;
-}
-a:visited,
-a{
-	color:#335588;
-	text-decoration:none;
-}
-a:hover{
-	color:#ff5577;
-}
-button.run{
-	width:100px;
-}
-*/

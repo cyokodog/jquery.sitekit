@@ -1,0 +1,12 @@
+/* hatebu users */
+a:visited.hatebu-users,
+a.hatebu-users{
+	font-style:italic;
+	margin-left:4px;
+	font-weight:bold;
+	color:#ff5577;
+	color:#ff7799;
+}
+a:hover.hatebu-users{
+	color:#ff0022;
+}

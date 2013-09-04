@@ -1,0 +1,25 @@
+/* Go Top */
+a.go-top{
+	margin-left:-32px;
+	padding-top:8px;
+	position:fixed;
+	left:100%;
+	bottom:-10px;
+	min-width:29px;
+	height:70px;
+	background:url("go-top.png") no-repeat 2px 2px #0090df;
+	border-radius:15px 15px 0 0;
+	text-decoration:none;
+	font-size:12px;
+	font-family:Arial;
+	color:#fff;
+	z-index:9999;
+}
+a:hover.go-top{
+	color:#fff;
+	background-color:#ff5577;
+}
+a.go-top span{
+	margin:0 12px 0 34px;
+	white-space:nowrap; 
+}
