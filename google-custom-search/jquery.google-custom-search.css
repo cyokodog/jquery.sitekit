@@ -1,4 +1,5 @@
 /* Google Custom Search */
+
 div.gsc-control-cse{
 	border:none;
 	background:transparent;
@@ -39,8 +40,17 @@ div.gsc-control-cse a.gsst_a{
 div.gsc-control-cse input.gsc-search-button{
 	border-color:#1090df;
 	background-color:#1090df;
+	box-sizing:content-box!important; /* for bootstrap */
 }
 div.gsc-control-cse input:hover.gsc-search-button{
 	border-color:#ff5577;
 	background-color:#ff5577;
 }
+
+/* for bootstrap */
+div.gsc-input-box,
+td.gsib_a,
+div.gsc-control-cse input.gsc-search-button{
+	box-sizing:content-box!important;
+}
+

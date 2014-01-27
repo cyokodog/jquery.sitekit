@@ -1,5 +1,5 @@
 /*
- * 	Go Top 0.1 - jQuery plugin
+ * 	Go Top 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2013 cyokodog 
@@ -15,17 +15,21 @@
 (function(){
 	var plugin = $.goTop = function(option){
 		var c = plugin.config = $.extend(plugin.defaults,option||{});
+		c.win = $(window);
+		if(c.button = c.win.data('go-top')) return c.button;
 		c.button = $('<a href="#"/>').addClass(c.className).hide().
 		on('click',function(){
 			$(this).blur();
 			$('html,body').animate({scrollTop:0},c.scrollSpeed);
 			return false;
 		});
+		c.win.data('go-top', c.button);
 		!c.label || $('<span/>').text(c.label).appendTo(c.button);
 		var lazy = plugin.Lazy(plugin.toggleButton,c.delay);
-		c.win = $(window).on('scroll',function(){
+		$(window).on('scroll',function(){
 			lazy.run();
 		});
+
 		if(c.autoAppend){
 			c.button.appendTo('body');
 			plugin.toggleButton();

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>External | jQuery Plugin :: Demo</title>
+<link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
+<style>
+h1{
+	text-transform:uppercase;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/behave/behave.js"></script>
+<script>
+jQuery(function($){
+	$('textarea.code').exCodePrettify({
+		tabToSpace : true,
+		showDemo : true,
+		editCode : true,
+		behaveJS : true
+	});
+});
+</script>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-topx" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://www.cyokodog.net/blog/jquery-sitekit/" target="_blank"><span class="glyphicon glyphicon-book"></span> Document</a></li>
+					<li><a href="https://github.com/cyokodog/jquery.sitekit" target="_blank"><b class="glyphicon glyphicon-download-alt"></b> Download</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>External <small>:: jQuery SiteKit</small></h1>
+			<p class="lead">$( link ).external()</p>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="demo">
+			<div class="ex-code-prettify demo-top">
+<textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
+/* bootstrap を非適用にしたい場合は以下を削除してください */
+http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
+
+jquery.external.css
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'jsFile'}">
+jquery.external.js
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
+<p>以下は外部サイトのため、target="_blank" と externalクラスが追加されます</p>
+<ul class="links">
+	<li>
+		<a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+		jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+	</li>
+	<li>
+		<a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
+		jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+	</li>
+	<li>
+		<a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
+		jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+	</li>
+	<li>
+		<a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
+		IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+	</li>
+</ul>
+<p>以下は自サイトのため、なにもされません</p>
+<ul class="links">
+	<li>
+		<a href="demo.html">このページ</a>
+	</li>
+</ul>
+<p>以下は外部リンクですが、画像のみを内包してるので externalクラスは付与されません</p>
+<ul class="links">
+	<li>cyokodog<br/>
+		<a href="https://plus.google.com/u/0/#115524754009910942363">
+			<img src="sample.jpg"/>
+		</a>
+	</li>
+</ul>
+</textarea>
+
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('ul.links a').external();
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+ul.links li{
+	margin-bottom:16px;
+}
+</textarea>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
