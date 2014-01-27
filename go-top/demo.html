@@ -3,24 +3,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Go Top | jQuery Plugin :: Demo</title>
-<link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" >
+<link href="jquery.go-top.css" rel="stylesheet" type="text/css" media="screen" >
 <style>
 h1{
 	text-transform:uppercase;
 }
+div.demo-contents{
+	padding:16px 16px 2000px;
+	background:#f0f0f0;
+}
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
-<script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
-<script src="http://cyokodog.github.io/jquery.ex-code-prettify/behave/behave.js"></script>
+<script src="jquery.go-top.js"></script>
 <script>
 jQuery(function($){
-	$('textarea.code').exCodePrettify({
-		tabToSpace : true,
-		showDemo : true,
-		editCode : true,
-		behaveJS : true
-	});
+	$.goTop({label:'TOP'});
 });
 </script>
 </head>
@@ -52,37 +50,9 @@ jQuery(function($){
 	</div>
 
 	<div class="container">
-
-		<div class="demo">
-			<div class="ex-code-prettify demo-right">
-<textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
-/* bootstrap を非適用にしたい場合は以下を削除してください */
-http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
-
-jquery.go-top.css
-</textarea>
-<textarea class="code" data-ex-code-prettify-param="{codeType:'jsFile'}">
-jquery.go-top.js
-</textarea>
-<textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
-<div class="demo-contents">
-↓方向にスクロールしてください
-</div>
-</textarea>
-
-<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
-	$.goTop({label:'TOP'});
-</textarea>
-<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
-div.demo-contents{
-	padding:16px 16px 2000px;
-	background:#f0f0f0;
-}
-</textarea>
-			</div>
+		<div class="demo-contents">
+		↓方向にスクロールしてください
 		</div>
-
-
 	</div>
 </body>
 </html>
