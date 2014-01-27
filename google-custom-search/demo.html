@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Google Custom Search | jQuery Plugin :: Demo</title>
 <link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
+<link href="jquery.google-custom-search.css" rel="stylesheet" type="text/css" media="screen" >
+
 <style>
 h1{
 	text-transform:uppercase;
@@ -18,7 +20,7 @@ jQuery(function($){
 	$('textarea.code').exCodePrettify({
 		tabToSpace : true,
 		showDemo : true,
-		editCode : true,
+		editCode : false,
 		behaveJS : true
 	});
 });
@@ -54,10 +56,10 @@ jQuery(function($){
 	<div class="container">
 
 		<div class="demo">
-			<div class="ex-code-prettify demo-top">
+			<div class="ex-code-prettify demo-right">
 <textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
-/* bootstrap を非適用にしたい場合は以下を削除してください */
-http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
+/* bootstrap を適用すると Firefox でレイアウトがくずれます */
+/* http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css */
 
 jquery.google-custom-search.css
 </textarea>
@@ -65,7 +67,8 @@ jquery.google-custom-search.css
 jquery.google-custom-search.js
 </textarea>
 <textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
-			<div class="search-area"></div></textarea>
+			<div class="search-area"></div>
+</textarea>
 
 <textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
 $('div.search-area').googleCustomSearch({
