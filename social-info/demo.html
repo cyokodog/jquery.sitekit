@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Social Info | jQuery Plugin :: Demo</title>
+<link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
+<style>
+h1{
+	text-transform:uppercase;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/behave/behave.js"></script>
+<script>
+jQuery(function($){
+	$('textarea.code').exCodePrettify({
+		tabToSpace : true,
+		showDemo : true,
+		editCode : true,
+		behaveJS : true
+	});
+});
+</script>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-topx" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://www.cyokodog.net/blog/jquery-sitekit/" target="_blank"><span class="glyphicon glyphicon-book"></span> Document</a></li>
+					<li><a href="https://github.com/cyokodog/jquery.sitekit" target="_blank"><b class="glyphicon glyphicon-download-alt"></b> Download</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Social Info <small>:: jQuery SiteKit</small></h1>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="demo">
+			<div class="ex-code-prettify demo-right">
+<textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
+/* bootstrap を非適用にしたい場合は以下を削除してください */
+http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'jsFile'}">
+jquery.social-info.js
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
+<div class="input-group">
+	<input id="get-url" type="text" class="form-control" value="http://www.google.com/"/>
+	<span class="input-group-btn">
+		<button id="get-info" class="btn btn-success">GET</button>
+	</span>
+</div>
+<div id="result">
+	<h3>Twitter</h3>
+	<dl class="twitter">
+		<dt>getEntryCount</dt>
+		<dd class="entryCount"></dd>
+		<dt>getShareUrl</dt>
+		<dd><a class="shareUrl" target="_blank"></a> </dd>
+		<dt>getSearchUrl</dt>
+		<dd><a class="searchUrl" target="_blank"></a> </dd>
+	</dl>
+	<h3>Facebook</h3>
+	<dl class="facebook">
+		<dt>getEntryCount</dt>
+		<dd class="entryCount"></dd>
+		<dt>getShareUrl</dt>
+		<dd><a class="shareUrl" target="_blank"></a> </dd>
+		<dt>getSearchUrl</dt>
+		<dd><a class="searchUrl" target="_blank"></a> </dd>
+	</dl>
+	<h3>Google+</h3>
+	<dl class="googleplus">
+		<dt>getShareUrl</dt>
+		<dd><a class="shareUrl" target="_blank"></a> </dd>
+		<dt>getSearchUrl</dt>
+		<dd><a class="searchUrl" target="_blank"></a> </dd>
+	</dl>
+	<h3>Hatebu</h3>
+	<dl class="hatebu">
+		<dt>getEntryCount</dt>
+		<dd class="entryCount"></dd>
+		<dt>getEntryUrl</dt>
+		<dd><a class="entryUrl" target="_blank"></a></dd>
+		<dt>getProfileImgUrl</dt>
+		<dd class="profileImgUrl">
+			<a class="entryUrl" target="_blank"></a><br/>
+			<img/>
+		</dd>
+		<dt>getEntryList</dt>
+		<dd class="entryList"></dd>
+		<dt>getEntry</dt>
+		<dd class="entry"></dd>
+	</dl>
+</div>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+var getInfo = function(){
+	var url = $('#get-url').val();
+	var id = 'cyokodog';
+
+	//
+	// Twitter
+	//
+	$.si.twitter.getEntryCount(url, function(r){
+		$('dl.twitter .entryCount').text(r);
+	});
+
+	var r = $.si.twitter.getShareUrl(url);
+	$('dl.twitter a.shareUrl').text(r).prop('href', r);
+
+	var r = $.si.twitter.getSearchUrl(url);
+	$('dl.twitter a.searchUrl').text(r).prop('href', r);
+
+	// Facebook
+
+	$.si.facebook.getEntryCount({
+		url : url,
+		callback : function(r){
+			$('dl.facebook .entryCount').text(r);
+		}
+	});
+
+	var r = $.si.facebook.getShareUrl(url);
+	$('dl.facebook a.shareUrl').text(r).prop('href', r);
+
+	var r = $.si.facebook.getSearchUrl(url);
+	$('dl.facebook a.searchUrl').text(r).prop('href', r);
+
+	//Google Plus
+
+	var r = $.si.googleplus.getShareUrl(url);
+	$('dl.googleplus a.shareUrl').text(r).prop('href', r);
+
+	var r = $.si.googleplus.getSearchUrl(url);
+	$('dl.googleplus a.searchUrl').text(r).prop('href', r);
+
+	// Hatebu
+
+	$.si.hatebu.getEntryCount(url, function(r){
+		$('dl.hatebu .entryCount').text(r);
+	});
+
+	var r = $.si.hatebu.getEntryUrl(url);
+	$('dl.hatebu a.entryUrl').text(r).prop('href', r);
+
+	var r = $.si.hatebu.getProfileImgUrl(id);
+	$('dl.hatebu dd.profileImgUrl a').prop('href', r).text(r);
+	$('dl.hatebu dd.profileImgUrl img').prop('src', r);
+
+	$.si.hatebu.getEntryList(url, function(json){
+		$('<textarea/>').val(JSON.stringify(json, null, '    ')).appendTo(
+			$('dl.hatebu .entryList').empty()
+		);
+	});
+
+	$.si.hatebu.getEntry(url, function(json){
+		$('<textarea/>').val(JSON.stringify(json, null, '    ')).appendTo(
+			$('dl.hatebu .entry').empty()
+		);
+	});
+
+
+
+
+}
+$('#get-info').on('click', getInfo);
+
+
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+#result dd{
+	margin-bottom:16px;
+	min-height:16px;
+}
+#result h3{
+	border-bottom:solid 1px #e0e0e0;
+}
+#result textarea{
+	width:98%;
+	height:300px;
+}
+</textarea>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
