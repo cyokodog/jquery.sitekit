@@ -132,6 +132,14 @@
 				callback : arg.callback
 			});
 		},
+		getEntryUrl : function(url){
+			url = url || location.href;
+			return 'http://b.hatena.ne.jp/entry/' + url.replace(/^http:\/\//,'').replace(/^https:\/\//,'s/');
+		},
+		getSearchUrl : function( url ){
+			url = url || location.href;
+			return 'http://b.hatena.ne.jp/entrylist?url=' + encodeURIComponent( url );
+		},
 		getEntryList : function( url, sort, callback){
 			if(typeof sort == 'function'){
 				callback = sort;
@@ -161,10 +169,6 @@
 				},
 				callback : arg.callback
 			});
-		},
-		getEntryUrl : function(url){
-			url = url || location.href;
-			return 'http://b.hatena.ne.jp/entry/' + url.replace(/^http:\/\//,'').replace(/^https:\/\//,'s/');
 		},
 		getProfileImgUrl : function(id, size){
 			size = size ? '_'+size : '';

@@ -101,7 +101,13 @@ jquery.social-info.js
 		<dd class="entryCount"></dd>
 		<dt>$.si.hatebu.getEntryUrl( url )</dt>
 		<dd><a class="entryUrl" target="_blank"></a></dd>
-		<dt>$.si.hatebu.getProfileImgUrl(id)</dt>
+		<dt>$.si.hatebu.getSearchUrl( url )</dt>
+		<dd><a class="searchUrl" target="_blank"></a> </dd>
+		<dt>$.si.hatebu.getEntryList(url, function( json ){ })</dt>
+		<dd class="entryList"></dd>
+		<dt>$.si.hatebu.getEntry(url, function( json ){ })</dt>
+		<dd class="entry"></dd>
+		<dt>$.si.hatebu.getProfileImgUrl( id )</dt>
 		<dd class="profileImgUrl">
 			<a target="_blank"></a><br/>
 			<img/>
@@ -111,10 +117,6 @@ jquery.social-info.js
 			<a target="_blank"></a><br/>
 			<img/>
 		</dd>
-		<dt>$.si.hatebu.getEntryList(url, function( json ){ })</dt>
-		<dd class="entryList"></dd>
-		<dt>$.si.hatebu.getEntry(url, function( json ){ })</dt>
-		<dd class="entry"></dd>
 	</dl>
 </div>
 </textarea>
@@ -168,13 +170,8 @@ var getInfo = function(){
 	var r = $.si.hatebu.getEntryUrl( url );
 	$('dl.hatebu a.entryUrl').text(r).prop('href', r);
 
-	var r = $.si.hatebu.getProfileImgUrl(id);
-	$('dl.hatebu dd.profileImgUrl a').prop('href', r).text(r);
-	$('dl.hatebu dd.profileImgUrl img').prop('src', r);
-
-	var r = $.si.hatebu.getEntryImgUrl( url );
-	$('dl.hatebu dd.entryImgUrl a').prop('href', r).text(r);
-	$('dl.hatebu dd.entryImgUrl img').prop('src', r);
+	var r = $.si.hatebu.getSearchUrl( url );
+	$('dl.hatebu a.searchUrl').text(r).prop('href', r);
 
 	$.si.hatebu.getEntryList(url, function(json){
 		$('<textarea/>').val(JSON.stringify(json, null, '    ')).appendTo(
@@ -187,6 +184,15 @@ var getInfo = function(){
 			$('dl.hatebu .entry').empty()
 		);
 	});
+
+	var r = $.si.hatebu.getProfileImgUrl(id);
+	$('dl.hatebu dd.profileImgUrl a').prop('href', r).text(r);
+	$('dl.hatebu dd.profileImgUrl img').prop('src', r);
+
+	var r = $.si.hatebu.getEntryImgUrl( url );
+	$('dl.hatebu dd.entryImgUrl a').prop('href', r).text(r);
+	$('dl.hatebu dd.entryImgUrl img').prop('src', r);
+
 	return arguments.callee;
 }
 $('#get-info').on('click', getInfo());
