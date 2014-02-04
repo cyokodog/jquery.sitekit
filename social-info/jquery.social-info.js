@@ -72,7 +72,7 @@
 				}
 			});
 		},
-		getShareUrl : function(url, title ){
+		getEntryUrl : function(url, title ){
 			url = url || location.href;
 			if(title) title = '&text=' + encodeURIComponent(title);
 			else{
@@ -99,7 +99,7 @@
 				}
 			});
 		},
-		getShareUrl : function( url ){
+		getEntryUrl : function( url ){
 			url = url || location.href;
 			return 'http://www.facebook.com/sharer.php?u=' + encodeURIComponent(url);
 		},
@@ -110,7 +110,7 @@
 	}
 
 	$.si.googleplus = {
-		getShareUrl : function( url ){
+		getEntryUrl : function( url ){
 			url = url || location.href;
 			return 'https://plus.google.com/share?url=' + encodeURIComponent(url);
 		},
@@ -155,7 +155,7 @@
 		getEntry : function( url , callback){
 			var arg = $.si.reArg(url, callback)
 			$.si.jsonp({
-				url : 'http://b.hatena.ne.jp/entry/json/',
+				url : 'http://b.hatena.ne.jp/entry/jsonlite/',
 				data : {
 					url : arg.url
 				},
@@ -169,6 +169,9 @@
 		getProfileImgUrl : function(id, size){
 			size = size ? '_'+size : '';
 			return 'http://cdn.www.st-hatena.com/users/mo/'+id+'/profile'+size+'.gif';
+		},
+		getEntryImgUrl : function(url){
+			return 'http://b.hatena.ne.jp/entry/image/' + url;
 		}
 	};
 

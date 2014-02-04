@@ -62,8 +62,9 @@ http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
 jquery.social-info.js
 </textarea>
 <textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
+<p>URL を変更して試してみてください</p>
 <div class="input-group">
-	<input id="get-url" type="text" class="form-control" value="http://www.google.com/"/>
+	<input id="get-url" type="text" class="form-control" value="http://www.cyokodog.net/"/>
 	<span class="input-group-btn">
 		<button id="get-info" class="btn btn-success">GET</button>
 	</span>
@@ -71,43 +72,48 @@ jquery.social-info.js
 <div id="result">
 	<h3>Twitter</h3>
 	<dl class="twitter">
-		<dt>getEntryCount</dt>
+		<dt>$.si.twitter.getEntryCount(url, function( count ){ } )</dt>
 		<dd class="entryCount"></dd>
-		<dt>getShareUrl</dt>
-		<dd><a class="shareUrl" target="_blank"></a> </dd>
-		<dt>getSearchUrl</dt>
+		<dt>$.si.twitter.getEntryUrl( url )</dt>
+		<dd><a class="entryUrl" target="_blank"></a> </dd>
+		<dt>$.si.twitter.getSearchUrl( url )</dt>
 		<dd><a class="searchUrl" target="_blank"></a> </dd>
 	</dl>
 	<h3>Facebook</h3>
 	<dl class="facebook">
-		<dt>getEntryCount</dt>
+		<dt>$.si.facebook.getEntryCount(url, function( count ){ } )</dt>
 		<dd class="entryCount"></dd>
-		<dt>getShareUrl</dt>
-		<dd><a class="shareUrl" target="_blank"></a> </dd>
-		<dt>getSearchUrl</dt>
+		<dt>$.si.facebook.getEntryUrl( url )</dt>
+		<dd><a class="entryUrl" target="_blank"></a> </dd>
+		<dt>$.si.facebook.getSearchUrl( url )</dt>
 		<dd><a class="searchUrl" target="_blank"></a> </dd>
 	</dl>
 	<h3>Google+</h3>
 	<dl class="googleplus">
-		<dt>getShareUrl</dt>
-		<dd><a class="shareUrl" target="_blank"></a> </dd>
-		<dt>getSearchUrl</dt>
+		<dt>$.si.googleplus.getEntryUrl( url )</dt>
+		<dd><a class="entryUrl" target="_blank"></a> </dd>
+		<dt>$.si.googleplus.getSearchUrl( url )</dt>
 		<dd><a class="searchUrl" target="_blank"></a> </dd>
 	</dl>
 	<h3>Hatebu</h3>
 	<dl class="hatebu">
-		<dt>getEntryCount</dt>
+		<dt>$.si.hatebu.getEntryCount(url, function( count ){ } )</dt>
 		<dd class="entryCount"></dd>
-		<dt>getEntryUrl</dt>
+		<dt>$.si.hatebu.getEntryUrl( url )</dt>
 		<dd><a class="entryUrl" target="_blank"></a></dd>
-		<dt>getProfileImgUrl</dt>
+		<dt>$.si.hatebu.getProfileImgUrl(id)</dt>
 		<dd class="profileImgUrl">
-			<a class="entryUrl" target="_blank"></a><br/>
+			<a target="_blank"></a><br/>
 			<img/>
 		</dd>
-		<dt>getEntryList</dt>
+		<dt>$.si.hatebu.getEntryImgUrl( url )</dt>
+		<dd class="entryImgUrl">
+			<a target="_blank"></a><br/>
+			<img/>
+		</dd>
+		<dt>$.si.hatebu.getEntryList(url, function( json ){ })</dt>
 		<dd class="entryList"></dd>
-		<dt>getEntry</dt>
+		<dt>$.si.hatebu.getEntry(url, function( json ){ })</dt>
 		<dd class="entry"></dd>
 	</dl>
 </div>
@@ -124,10 +130,10 @@ var getInfo = function(){
 		$('dl.twitter .entryCount').text(r);
 	});
 
-	var r = $.si.twitter.getShareUrl(url);
-	$('dl.twitter a.shareUrl').text(r).prop('href', r);
+	var r = $.si.twitter.getEntryUrl( url );
+	$('dl.twitter a.entryUrl').text(r).prop('href', r);
 
-	var r = $.si.twitter.getSearchUrl(url);
+	var r = $.si.twitter.getSearchUrl( url );
 	$('dl.twitter a.searchUrl').text(r).prop('href', r);
 
 	// Facebook
@@ -139,18 +145,18 @@ var getInfo = function(){
 		}
 	});
 
-	var r = $.si.facebook.getShareUrl(url);
-	$('dl.facebook a.shareUrl').text(r).prop('href', r);
+	var r = $.si.facebook.getEntryUrl( url );
+	$('dl.facebook a.entryUrl').text(r).prop('href', r);
 
-	var r = $.si.facebook.getSearchUrl(url);
+	var r = $.si.facebook.getSearchUrl( url );
 	$('dl.facebook a.searchUrl').text(r).prop('href', r);
 
 	//Google Plus
 
-	var r = $.si.googleplus.getShareUrl(url);
-	$('dl.googleplus a.shareUrl').text(r).prop('href', r);
+	var r = $.si.googleplus.getEntryUrl( url );
+	$('dl.googleplus a.entryUrl').text(r).prop('href', r);
 
-	var r = $.si.googleplus.getSearchUrl(url);
+	var r = $.si.googleplus.getSearchUrl( url );
 	$('dl.googleplus a.searchUrl').text(r).prop('href', r);
 
 	// Hatebu
@@ -159,12 +165,16 @@ var getInfo = function(){
 		$('dl.hatebu .entryCount').text(r);
 	});
 
-	var r = $.si.hatebu.getEntryUrl(url);
+	var r = $.si.hatebu.getEntryUrl( url );
 	$('dl.hatebu a.entryUrl').text(r).prop('href', r);
 
 	var r = $.si.hatebu.getProfileImgUrl(id);
 	$('dl.hatebu dd.profileImgUrl a').prop('href', r).text(r);
 	$('dl.hatebu dd.profileImgUrl img').prop('src', r);
+
+	var r = $.si.hatebu.getEntryImgUrl( url );
+	$('dl.hatebu dd.entryImgUrl a').prop('href', r).text(r);
+	$('dl.hatebu dd.entryImgUrl img').prop('src', r);
 
 	$.si.hatebu.getEntryList(url, function(json){
 		$('<textarea/>').val(JSON.stringify(json, null, '    ')).appendTo(
@@ -177,12 +187,9 @@ var getInfo = function(){
 			$('dl.hatebu .entry').empty()
 		);
 	});
-
-
-
-
+	return arguments.callee;
 }
-$('#get-info').on('click', getInfo);
+$('#get-info').on('click', getInfo());
 
 
 </textarea>
