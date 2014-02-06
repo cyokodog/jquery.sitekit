@@ -30,13 +30,17 @@
     width:32px;
     color:#000;
 }
+.esb-counter:visited,
 .esb-counter{
     width:64px;
 	background:#eee;
+    color:#428bca;
 }
 .esb-counter:hover{
 	background:#ddd;
 }
+
+
 
 .esb-hatebu{
 	background:#2c6ebd;
