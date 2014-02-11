@@ -62,8 +62,11 @@ div.gsc-input-box,
 td.gsib_a,
 div.gsc-control-cse input.gsc-search-button{
 	box-sizing:content-box!important;
-}
 
+}
+input.gsc-input{
+	font-size:13px;
+}
 /* Go Top */
 a.go-top{
 	margin-left:-32px;

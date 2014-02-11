@@ -7,6 +7,9 @@ type nul > jquery.sitekit.js
 type nul > jquery.sitekit.css
 
 
+REM jquery.social-info
+type social-info\jquery.social-info.js >> jquery.sitekit.js
+
 REM jquery.easy-feed
 type easy-feed\jquery.easy-feed.js >> jquery.sitekit.js
 
