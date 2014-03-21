@@ -1,5 +1,5 @@
 /*
- * 	Easy Social Buttons 0.1 - jQuery plugin
+ * 	Easy Social Buttons 0.0 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -45,8 +45,8 @@
 			orders : ['hatebu','twitter', 'facebook', 'googleplus'],
 			labels : {
 				'hatebu' : 'B!',
-				'twitter' : 't',
-				'facebook' : 'f',
+				'twitter' : 'ｔ',
+				'facebook' : 'ｆ',
 				'googleplus' : 'G+'
 			}
 		}
@@ -71,7 +71,7 @@
 		var f = $.esb[sname] = function(option ){
 			var callee = arguments.callee;
 			if(!(this instanceof callee)) return new callee(option );
-			var o = this, c = o.config = $.extend(true, {}, callee.defaults, option);
+			var o = this, c = o.config = $.extend(true, {}, callee.defaults, callee.overwrite[sname] || {}, option);
 			c.url = c.url || location.href;
 			c.button = $(c.tempalte);
 			c.wrapper = c.button.hasClass('esb') ? c.button : c.button.find('.esb');
@@ -79,21 +79,16 @@
 			c.counter = c.wrapper.find('.esb-counter').html(c.waitCounter);
 			c.entryLink = c.wrapper.find('a.esb-entry');
 			c.searchLink = c.wrapper.find('a.esb-search');
-			if(c.useImageColor) c.wrapper.addClass('esb-' + sname);
+			if(c.useBrandColor) c.wrapper.addClass('esb-' + sname);
 			if($.si){
 				var SI = $.si[sname];
-				if(c.counter.size()){
-					if(!SI.getEntryCount){
-						c.counter.hide();
-					}
-					else{
-						SI.getEntryCount(c.url, function(count ){
-							c.counter.text(count);
-						});
-					}
-					c.entryLink.prop('href', SI.getEntryUrl(c.url )).prop('title', c.entryTitle);
-					c.searchLink.prop('href', SI.getSearchUrl(c.url )).prop('title', c.searchTitle);
+				if(c.counter.size() && SI.getEntryCount){
+					SI.getEntryCount(c.url, function(count ){
+						c.counter.text(count);
+					});
 				}
+				!SI.getEntryUrl || c.entryLink.prop('href', SI.getEntryUrl(c.url )).prop('title', c.entryTitle);
+				!SI.getSearchUrl || c.searchLink.prop('href', SI.getSearchUrl(c.url )).prop('title', c.searchTitle);
 			}
 		}
 		$.extend(f.prototype, {
@@ -110,8 +105,16 @@
 				entryTitle : '投稿する',
 				searchTitle : '検索する',
 				waitCounter : '<span>&nbsp;</span>',
-				tempalte : '<span class="esb"><a class="esb-label esb-entry" target="_blank"></a><a class="esb-counter esb-search" target="_blank"></a></span>',
-				useImageColor : true
+				tempalte : '<span class="esb"><a class="esb-label esb-search" target="_blank"></a><a class="esb-counter esb-entry" target="_blank"></a></span>',
+				useBrandColor : true
+			},
+			overwrite : {
+				hatebu : {
+					entryTitle : 'ブックマークする'
+				},
+				googleplus : {
+					tempalte : '<span class="esb"><a class="esb-label esb-entry" target="_blank"></a></span>'
+				}
 			}
 		});
 	});

@@ -15,8 +15,11 @@
 	text-decoration:none;
 }
 .esb:hover{
-	background:#bbb;
-    color:#000;
+	background:#555;
+	color:#000;
+}
+.esb:hover .esb-label{
+	color:#fff;
 }
 .esb-label,
 .esb-counter{
@@ -29,6 +32,10 @@
 .esb-label{
     width:32px;
     color:#000;
+}
+.esb:hover .esb-label:hover{
+	font-weight:bold;
+	color:#ffff00;
 }
 .esb-counter:visited,
 .esb-counter{
@@ -51,16 +58,26 @@
 .esb-hatebu .esb-label{
 	color:#fff;
 }
+.esb-hatebu .esb-label:hover{
+	color:#ffff00;
+	font-weight:bold;
+}
+
+
 
 
 .esb-twitter{
 	background:#33CCFF;
 }
 .esb-twitter:hover{
-	background:#23BCEF;
+	background:#13ACDF;
 }
 .esb-twitter .esb-label{
 	color:#fff;
+}
+.esb-twitter .esb-label:hover{
+	color:#ffff00;
+	font-weight:bold;
 }
 
 
@@ -73,6 +90,11 @@
 .esb-facebook .esb-label{
 	color:#fff;
 }
+.esb-facebook .esb-label:hover{
+	color:#ffff00;
+	font-weight:bold;
+}
+
 
 .esb-googleplus{
 	background:#C63D2D;
@@ -82,6 +104,10 @@
 }
 .esb-googleplus .esb-label{
 	color:#fff;
+}
+.esb-googleplus .esb-label:hover{
+	color:#ffff00;
+	font-weight:bold;
 }
 
 
