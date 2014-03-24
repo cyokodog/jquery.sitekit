@@ -20,7 +20,9 @@
 		var callee = arguments.callee;
 		if(!(this instanceof callee)) return new callee(option );
 		var o = this, c = o.config = $.extend(true, {}, callee.defaults, option);
+		c.orders = option.orders || c.orders;
 		c.buttons = $('<div class="easy-social-buttons-container"/>');
+		if(c.inverseColor) c.buttons.addClass('esb-inverse');
 		$.each(c.orders, function(){
 			var sname = this.toString();
 			var api = c[sname] = $.esb[sname](option );
@@ -53,7 +55,8 @@
 	});
 
 	$.fn.easySocialButtons = function(option ){
-		var c = option = $.extend(true, {}, plugin.defaults, option);
+		var c = $.extend(true, {}, plugin.defaults, option);
+		if(option) c.orders = option.orders || c.orders;
 		return this.each(function(){
 			var t = $(this);
 			c.url = t.prop('href') || t.data('href') || t.data('url') || c.url || location.href;
@@ -71,7 +74,7 @@
 		var f = $.esb[sname] = function(option ){
 			var callee = arguments.callee;
 			if(!(this instanceof callee)) return new callee(option );
-			var o = this, c = o.config = $.extend(true, {}, callee.defaults, callee.overwrite[sname] || {}, option);
+			var o = this, c = o.config = $.extend(true, {}, callee.defaults, callee.overwrite[sname] || {}, option, option[sname]);
 			c.url = c.url || location.href;
 			c.button = $(c.tempalte);
 			c.wrapper = c.button.hasClass('esb') ? c.button : c.button.find('.esb');
@@ -106,7 +109,8 @@
 				searchTitle : '検索する',
 				waitCounter : '<span>&nbsp;</span>',
 				tempalte : '<span class="esb"><a class="esb-label esb-search" target="_blank"></a><a class="esb-counter esb-entry" target="_blank"></a></span>',
-				useBrandColor : true
+				useBrandColor : true,
+				inverseColor : false
 			},
 			overwrite : {
 				hatebu : {

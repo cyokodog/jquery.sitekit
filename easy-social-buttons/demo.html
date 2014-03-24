@@ -5,25 +5,34 @@
 <meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10,IE=11,IE=12" />
 <title>Easy Social Buttons | jQuery Plugin :: Demo</title>
 <link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
-<link href="jquery.easy-social-buttons.css" rel="stylesheet" type="text/css" media="screen" >
-
-
 <style>
 h1{
 	text-transform:uppercase;
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cyokodog.github.io/jquery.hash-contents/jquery.hash-contents.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
 <script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
 <script src="http://cyokodog.github.io/jquery.ex-code-prettify/behave/behave.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
 <script>
 jQuery(function($){
-	$('textarea.code').exCodePrettify({
-		tabToSpace : true,
-		showDemo : true,
-		editCode : true,
-		behaveJS : true
+	$('div.demo').hashContents({
+		useCookie : true,
+		reloadHashChange : true,
+		idPrefix : 'Demo',
+		listTo : 'ul.demo-index',
+		activeTitleTo : 'span.demo-title',
+		onActive : function(api){
+			$('div.demo textarea.code').exCodePrettify({
+				tabToSpace : true,
+				showDemo : true,
+				editCode : true,
+				behaveJS : true
+			});
+		}
 	});
 });
 </script>
@@ -52,80 +61,322 @@ jQuery(function($){
 		<div class="page-header">
 			<h1>Easy Social Buttons <small>:: jQuery SiteKit</small></h1>
 			<p class="lead">$( link ).easySocialButtons()</p>
+			<div class="btn-group demo-index-group pull-right">
+				<button type="button" class="btn btn-default" data-toggle="dropdown">
+					<span>DEMO</span>
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="dropdown">
+					<span class="demo-title"></span><!-- <span class="caret"></span>-->
+				</button>
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu demo-index" role="menu">
+				</ul>
+			</div>
 		</div>
 	</div>
 
 	<div class="container">
 
-		<div class="demo">
-			<div class="ex-code-prettify demo-top">
-<textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
-/* bootstrap を非適用にしたい場合は以下を削除してください */
-http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
 
-xjquery.easy-social-buttons.css
+
+
+<!-- Demo01 -->
+		<div class="demo">
+			<h3>ソーシャルボタンを自動挿入する</h3>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
+http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+jquery.easy-social-buttons.css
 </textarea>
-<textarea class="code" data-ex-code-prettify-param="{codeType:'jsFile'}">
+<textarea class="code jsFile" data-ex-code-prettify-param="{codeType:'jsFile'}">
 ../social-info/jquery.social-info.js
 jquery.easy-social-buttons.js
 </textarea>
-<textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
-<h2>List</h2>
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html'}">
 <ul class="links">
-	<li>
-		<a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
-		jQuery 関連記事まとめ - Cyokodog :: Diary</a>
-	</li>
-	<li>
-		<a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
-		jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
-	</li>
-	<li>
-		<a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
-		jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
-	</li>
-	<li>
-		<a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
-		IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
-	</li>
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+        jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
+        jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
+        jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
+        IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+    </li>
 </ul>
-
-<h2>Heading</h2>
-<div class="article">
-	<h4>
-		<a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
-		jQuery 関連記事まとめ - Cyokodog :: Diary</a>
-	</h4>
-	<h4>
-		<a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
-		jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
-	</h4>
-	<h4>
-		<a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
-		jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
-	</h4>
-	<h4>
-		<a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
-		IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
-	</h4>
-</div>
 </textarea>
-
 <textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
 $('ul.links a').easySocialButtons();
-$('div.article h4 a').easySocialButtons({autoAdd:false, callback:function(api ){
-	$(this).parent().after(api.getButtons());
-
-}});
 </textarea>
 <textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
 ul.links li{
-	margin-bottom:32px;
+    margin-bottom:32px;
 }
+</textarea>
+			</div>
+		</div>
+
+
+
+
+<!-- Demo02 -->
+		<div class="demo">
+			<h3>ソーシャルボタンを任意の場所に挿入する</h3>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
+http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+jquery.easy-social-buttons.css
+</textarea>
+<textarea class="code jsFile" data-ex-code-prettify-param="{codeType:'jsFile'}">
+../social-info/jquery.social-info.js
+jquery.easy-social-buttons.js
+</textarea>
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html'}">
+<div class="article">
+	<h4>
+	    <a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+	    jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+	</h4>
+	<p>contents...</p>
+</div>
+<div class="article">
+	<h4>
+	    <a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
+	    jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+	</h4>
+	<p>contents...</p>
+</div>
+<div class="article">
+	<h4>
+	    <a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
+	    jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+	</h4>
+	<p>contents...</p>
+</div>
+<div class="article">
+	<h4>
+	    <a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
+	    IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+	</h4>
+	<p>contents...</p>
+</div>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('div.article h4 a').easySocialButtons({
+	autoAdd:false,
+	callback : function( api ){
+    	$(this).parent().after(api.getButtons());
+	}
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
 div.article h4{
-	margin-top:32px;
-	border-bottom:solid 1px #ddd;
-	line-height:1.6;
+    margin-top:32px;
+    border-bottom:solid 1px #ddd;
+    line-height:1.6;
+}
+</textarea>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+<!-- Demo03 -->
+		<div class="demo">
+			<h3>ブランドカラーを使用しない（Light grey）</h3>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
+http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+jquery.easy-social-buttons.css
+</textarea>
+<textarea class="code jsFile" data-ex-code-prettify-param="{codeType:'jsFile'}">
+../social-info/jquery.social-info.js
+jquery.easy-social-buttons.js
+</textarea>
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html'}">
+<ul class="links">
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+        jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
+        jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
+        jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
+        IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+    </li>
+</ul>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('ul.links a').easySocialButtons({
+	useBrandColor : false
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+ul.links li{
+    margin-bottom:32px;
+}
+</textarea>
+			</div>
+		</div>
+
+
+
+<!-- Demo04 -->
+		<div class="demo">
+			<h3>ブランドカラーを使用しない（Dark grey）</h3>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
+http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+jquery.easy-social-buttons.css
+</textarea>
+<textarea class="code jsFile" data-ex-code-prettify-param="{codeType:'jsFile'}">
+../social-info/jquery.social-info.js
+jquery.easy-social-buttons.js
+</textarea>
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html'}">
+<ul class="links">
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+        jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
+        jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
+        jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
+        IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+    </li>
+</ul>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('ul.links a').easySocialButtons({
+	useBrandColor : false,
+	inverseColor: true
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+ul.links li{
+    margin-bottom:32px;
+}
+</textarea>
+			</div>
+		</div>
+
+
+<!-- Demo05 -->
+		<div class="demo">
+			<h3>一部のボタンを非表示にする／表示順を指定する</h3>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
+http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+jquery.easy-social-buttons.css
+</textarea>
+<textarea class="code jsFile" data-ex-code-prettify-param="{codeType:'jsFile'}">
+../social-info/jquery.social-info.js
+jquery.easy-social-buttons.js
+</textarea>
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html'}">
+<ul class="links">
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+        jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://d.hatena.ne.jp/cyokodog/20090224/jQueryPosSet01">
+        jQuery の位置・サイズ関連メソッドまとめ - Cyokodog :: Diary</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/37170454444/ex-demo">
+        jsdo.it みたいなことが簡単にできる jQuery プラグイン作ってみた - CYOKOLOG</a>
+    </li>
+    <li>
+        <a href="http://cyokodog.tumblr.com/post/38835740744/ie-version">
+        IE のレンダリングバージョンの指定と判定方法の自分なりまとめ - CYOKOLOG</a>
+    </li>
+</ul>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('ul.links a').easySocialButtons({
+	orders : ['facebook', 'twitter', 'googleplus']
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+ul.links li{
+    margin-bottom:32px;
+}
+</textarea>
+			</div>
+		</div>
+
+
+
+
+<!-- Demo06 -->
+		<div class="demo">
+			<h3>デザインをカスタマイズする（Bootstrap ベース）</h3>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
+http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+</textarea>
+<textarea class="code jsFile" data-ex-code-prettify-param="{codeType:'jsFile'}">
+../social-info/jquery.social-info.js
+jquery.easy-social-buttons.js
+</textarea>
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html'}">
+<h4>
+    <a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+    jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+</h4>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$.esb.hatebu.defaults.label = 'Hatebu!';
+$.esb.twitter.defaults.label = 'Twitter';
+$.esb.facebook.defaults.label = 'Facebook';
+
+$('h4 a').easySocialButtons({
+	tempalte : '<div class="btn-group esb"><a class="esb-label esb-entry btn btn-xs btn-primary"></a><a class="esb-counter esb-search btn btn-xs btn-default"></a></div>',
+	googleplus : {
+		label : 'Google+',
+		tempalte : '<div class="btn-group esb"><a class="esb-label esb-entry btn btn-xs btn-danger"></a></div>'
+	}
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+.esb{
+	margin:16px 16px 0 0;
+}
+.esb-label{
+	width:80px;
+}
+.esb-counter{
+	width:50px;
 }
 </textarea>
 			</div>

@@ -1,15 +1,16 @@
 .easy-social-buttons-container .esb{
-    margin-right:8px;
+	margin-right:8px;
+	line-height:1.5;
 }
 .esb{
 	font-family:Meiryo;
 	font-size:10px;
 	padding:2px;
 	display:inline-block;
-    text-decoration:none;
+	text-decoration:none;
 	border-radius:2px;
 	background:#ddd;
-    color:#005588;
+	color:#005588;
 }
 .esb a{
 	text-decoration:none;
@@ -23,15 +24,15 @@
 }
 .esb-label,
 .esb-counter{
-    padding:0 4px;
-    display:inline-block;
-    text-decoration:none;
-    text-align:center;
+	padding:0 4px;
+	display:inline-block;
+	text-decoration:none;
+	text-align:center;
 }
 .esb-label:visited,
 .esb-label{
-    width:32px;
-    color:#000;
+	width:32px;
+	color:#000;
 }
 .esb:hover .esb-label:hover{
 	font-weight:bold;
@@ -39,12 +40,21 @@
 }
 .esb-counter:visited,
 .esb-counter{
-    width:64px;
+	width:64px;
 	background:#eee;
-    color:#428bca;
+	color:#428bca;
+	color:#000;
 }
 .esb-counter:hover{
 	background:#ddd;
+}
+
+
+.esb-inverse .esb{
+	background:#555;
+}
+.esb-inverse .esb .esb-label{
+	color:#fff;
 }
 
 
