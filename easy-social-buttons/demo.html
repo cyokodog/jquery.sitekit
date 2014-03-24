@@ -290,6 +290,9 @@ ul.links li{
 		</div>
 
 
+
+
+
 <!-- Demo05 -->
 		<div class="demo">
 			<h3>一部のボタンを非表示にする／表示順を指定する</h3>
@@ -338,9 +341,81 @@ ul.links li{
 
 
 
+
+
+
 <!-- Demo06 -->
 		<div class="demo">
-			<h3>デザインをカスタマイズする（Bootstrap ベース）</h3>
+			<h3>デザインをカスタマイズする その１</h3>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
+http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+</textarea>
+<textarea class="code jsFile" data-ex-code-prettify-param="{codeType:'jsFile'}">
+../social-info/jquery.social-info.js
+jquery.easy-social-buttons.js
+</textarea>
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html'}">
+<div class="article">
+	<h4>
+	    <a href="http://d.hatena.ne.jp/cyokodog/20081016/jquerylinks01">
+	    jQuery 関連記事まとめ - Cyokodog :: Diary</a>
+	</h4>
+	<p>contents...</p>
+</div>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('h4 a').easySocialButtons({
+	autoAdd:false,
+	callback : function( api ){
+    	$(this).parent().after(api.getButtons());
+	},
+	tempalte : '<div class="esb my-custom">' +
+					'<h4 class="esb-label"></h4>' + 
+					'<div class="btn-group">' +
+						'<a class="esb-counter btn btn-default"></a>' +
+						'<a class="esb-entry btn btn-default">Share</a>' +
+						'<a class="esb-search btn btn-default">Search</a>' +
+					'</div>' +
+				'</div>',
+	hatebu : {
+		label : 'Hatebu!'
+	},
+	twitter : {
+		label : 'Twitter'
+	},
+	facebook : {
+		label : 'Facebook'
+	},
+	googleplus : {
+		label : 'Google+',
+		tempalte : '<div class="esb my-custom">' +
+						'<h4 class="esb-label"></h4>' + 
+						'<div class="btn-group">' +
+							'<a class="esb-entry btn btn-default">Share</a>' +
+							'<a class="esb-search btn btn-default">Search</a>' +
+						'</div>' +
+					'</div>',
+	}
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+.my-custom .btn{
+	width:100px;
+}
+</textarea>
+			</div>
+		</div>
+
+
+
+
+
+
+
+<!-- Demo07 -->
+		<div class="demo">
+			<h3>デザインをカスタマイズする その２</h3>
 			<div class="ex-code-prettify demo-top">
 <textarea class="code cssFile" data-ex-code-prettify-param="{codeType:'cssFile'}">
 http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
