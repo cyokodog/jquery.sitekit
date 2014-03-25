@@ -30,22 +30,22 @@
 		});
 	}
 	$.extend(plugin.prototype, {
-		getButtons : function(){
+		getButtons : function(){ // ボタンの取得
 			var o = this, c = o.config;
 			return c.buttons;
 		},
-		getButtonAPI : function(name ){
+		getButtonAPI : function(name ){ // API の取得
 			var o = this, c = o.config;
 			return c[name];
 		},
 	});
 	$.extend(plugin, {
 		defaults : {
-			autoAdd : true,
-			addMethod : 'insertAfter',
-			callback : function(api ){},
-			orders : ['hatebu','twitter', 'facebook', 'googleplus'],
-			labels : {
+			autoAdd : true, // true でボタンの自動挿入を行う
+			addMethod : 'insertAfter', // ボタンの挿入メソッドを指定
+			callback : function(api ){}, // プラグイン実行後のコールバック処理
+			orders : ['hatebu','twitter', 'facebook', 'googleplus'], // ボタンの表示順
+			labels : { // サービスの表示名
 				'hatebu' : 'B!',
 				'twitter' : 'ｔ',
 				'facebook' : 'ｆ',
@@ -112,12 +112,12 @@
 			defaults : {
 				url : '',
 				label : DF.labels[sname],
-				entryTitle : '投稿する',
-				searchTitle : '検索する',
-				waitCounter : '<span>&nbsp;</span>',
-				tempalte : '<span class="esb"><a class="esb-label esb-search" target="_blank"></a><a class="esb-counter esb-entry" target="_blank"></a></span>',
-				useBrandColor : true,
-				inverseColor : false
+				entryTitle : '投稿する', // esb-entry クラスを持つ要素に割り当てる title 属性値
+				searchTitle : '検索する', // esb-search クラスを持つ要素に割り当てる title 属性値
+				waitCounter : '<span>&nbsp;</span>', // Web API の取得結果待ち時に表示するマークアップ 
+				tempalte : '<span class="esb"><a class="esb-label esb-search" target="_blank"></a><a class="esb-counter esb-entry" target="_blank"></a></span>', // ボタンのテンプレート
+				useBrandColor : true, // ブランドカラーの使用
+				inverseColor : false // ブランドカラー未使用時の配色の反転
 			},
 			overwrite : {
 				hatebu : {
