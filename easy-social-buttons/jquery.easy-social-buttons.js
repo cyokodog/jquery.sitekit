@@ -1,5 +1,5 @@
 /*
- * 	Easy Social Buttons 0.0 - jQuery plugin
+ * 	Easy Social Buttons 0.1 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -51,7 +51,10 @@
 				'facebook' : 'ｆ',
 				'googleplus' : 'G+'
 			}
-		}
+		},
+		version : '0.1',
+		id : 'easy-social-buttons',
+		name : 'Easy Social Buttons'
 	});
 
 	$.fn.easySocialButtons = function(option ){
@@ -59,7 +62,11 @@
 		if(option) c.orders = option.orders || c.orders;
 		return this.each(function(){
 			var t = $(this);
-			c.url = t.prop('href') || t.data('href') || t.data('url') || c.url || location.href;
+			c.url = t.prop('href') || t.data('href') || t.data('url') || c.url;
+			if(!c.url){
+				c.url = location.href;
+				c.addMethod = 'appendTo';
+			}
 			var api = $.easySocialButtons(c);
 			if(c.autoAdd){
 				api.getButtons(c)[c.addMethod](t);
