@@ -6,6 +6,9 @@ REM     REM type go-top/jquery.go-top.js >> jquery.sitekit.js
 type nul > jquery.sitekit.js
 type nul > jquery.sitekit.css
 
+REM jquery.easy-social-buttons
+type easy-social-buttons\jquery.easy-social-buttons.js >> jquery.sitekit.js
+type easy-social-buttons\jquery.easy-social-buttons.css >> jquery.sitekit.css
 
 REM jquery.social-info
 type social-info\jquery.social-info.js >> jquery.sitekit.js
