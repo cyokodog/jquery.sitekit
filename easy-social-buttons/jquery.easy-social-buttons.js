@@ -1,5 +1,5 @@
 /*
- * 	Easy Social Buttons 0.1 - jQuery plugin
+ * 	Easy Social Buttons 0.1.1 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -37,7 +37,7 @@
 		getButtonAPI : function(name ){ // API の取得
 			var o = this, c = o.config;
 			return c[name];
-		},
+		}
 	});
 	$.extend(plugin, {
 		defaults : {
@@ -52,7 +52,7 @@
 				'googleplus' : 'G+'
 			}
 		},
-		version : '0.1',
+		version : '0.1.1',
 		id : 'easy-social-buttons',
 		name : 'Easy Social Buttons'
 	});
