@@ -21,6 +21,10 @@ jQuery(function($){
 		editCode : true,
 		behaveJS : true
 	});
+	setTimeout(function(){
+		var v = $.social ? ((($.social.info || {})['version'])||'') : '';
+		if(v) $('small.ver').text('v '+v);
+	},0);
 });
 </script>
 </head>
@@ -46,7 +50,7 @@ jQuery(function($){
 
 	<div class="container">
 		<div class="page-header">
-			<h1>Social Info <small>:: jQuery SiteKit</small></h1>
+			<h1>Social Info <small class="ver"></small> <small>:: jQuery SiteKit</small></h1>
 		</div>
 	</div>
 
@@ -90,6 +94,8 @@ jquery.social-info.js
 	</dl>
 	<h3>Google+</h3>
 	<dl class="googleplus">
+		<dt>$.si.googleplus.getEntryCount(url, function( count ){ } )</dt>
+		<dd class="entryCount"></dd>
 		<dt>$.si.googleplus.getEntryUrl( url )</dt>
 		<dd><a class="entryUrl" target="_blank"></a> </dd>
 		<dt>$.si.googleplus.getSearchUrl( url )</dt>
@@ -140,11 +146,8 @@ var getInfo = function(){
 
 	// Facebook
 
-	$.si.facebook.getEntryCount({
-		url : url,
-		callback : function(r){
-			$('dl.facebook .entryCount').text(r);
-		}
+	$.si.facebook.getEntryCount(url, function(r){
+		$('dl.facebook .entryCount').text(r);
 	});
 
 	var r = $.si.facebook.getEntryUrl( url );
@@ -154,6 +157,10 @@ var getInfo = function(){
 	$('dl.facebook a.searchUrl').text(r).prop('href', r);
 
 	//Google Plus
+
+	$.si.googleplus.getEntryCount(url, function(r){
+		$('dl.googleplus .entryCount').text(r);
+	});
 
 	var r = $.si.googleplus.getEntryUrl( url );
 	$('dl.googleplus a.entryUrl').text(r).prop('href', r);

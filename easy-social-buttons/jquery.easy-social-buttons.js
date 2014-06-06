@@ -1,5 +1,5 @@
 /*
- * 	Easy Social Buttons 0.1.1 - jQuery plugin
+ * 	Easy Social Buttons 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -52,7 +52,7 @@
 				'googleplus' : 'G+'
 			}
 		},
-		version : '0.1.1',
+		version : '0.2',
 		id : 'easy-social-buttons',
 		name : 'Easy Social Buttons'
 	});
@@ -122,9 +122,6 @@
 			overwrite : {
 				hatebu : {
 					entryTitle : 'ブックマークする'
-				},
-				googleplus : {
-					tempalte : '<span class="esb"><a class="esb-label esb-entry" target="_blank"></a></span>'
 				}
 			}
 		});

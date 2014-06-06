@@ -20,7 +20,6 @@ h1{
 <script>
 jQuery(function($){
 
-
 	$('div.demo').hashContents({
 		useCookie : true,
 		reloadHashChange : true,
@@ -34,8 +33,13 @@ jQuery(function($){
 				editCode : true,
 				behaveJS : true
 			});
+			setTimeout(function(){
+				var v = (($.easySocialButtons || {})['version'])||'';
+				if(v) $('small.ver').text('v '+v);
+			},0);
 		}
 	});
+
 });
 </script>
 </head>
@@ -61,7 +65,7 @@ jQuery(function($){
 
 	<div class="container">
 		<div class="page-header">
-			<h1>Easy Social Buttons <small class="ver">v 0.1.1</small> <small>:: jQuery SiteKit</small></h1>
+			<h1>Easy Social Buttons <small class="ver"></small> <small>:: jQuery SiteKit</small></h1>
 			<p class="lead">$( link ).easySocialButtons()</p>
 			<div class="btn-group demo-index-group pull-right">
 				<button type="button" class="btn btn-default" data-toggle="dropdown">

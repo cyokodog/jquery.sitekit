@@ -1,5 +1,5 @@
 /*
- * 	Social Info 0.1 - jQuery plugin
+ * 	Social Info 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -43,7 +43,10 @@
 			twitter : {
 				entryCount : {}
 			}
-		}
+		},
+		version : '0.2',
+		id : 'social-info',
+		name : 'Social Info'
 	}
 
 
@@ -110,6 +113,25 @@
 	}
 
 	$.si.googleplus = {
+		getEntryCount : function( url , callback){
+			var arg = $.si.reArg(url, callback)
+			$.ajax({
+				type: "get",
+				dataType: "xml",
+				url: "http://query.yahooapis.com/v1/public/yql",
+				data: {
+					q: "SELECT content FROM data.headers WHERE url='https://plusone.google.com/_/+1/fastbutton?hl=ja&url=" + arg.url + "' and ua='#Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36'",
+					format: "xml",
+					env: "http://datatables.org/alltables.env"
+				},
+				success: function (data) {
+					var content = $(data).find("content").text();
+					var match = content.match(/window\.__SSR[\s*]=[\s*]{c:[\s*](\d+)/i);
+					var count = (match != null) ? match[1] : 0;
+					arg.callback(count);
+				}
+			});
+		},
 		getEntryUrl : function( url ){
 			url = url || location.href;
 			return 'https://plus.google.com/share?url=' + encodeURIComponent(url);
