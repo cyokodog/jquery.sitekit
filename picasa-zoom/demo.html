@@ -2,20 +2,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Mailto | jQuery Plugin :: Demo</title>
-<!--
+<title>Picasa Zoom | jQuery Plugin :: Demo</title>
 <link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
--->
-<link href="../../jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
 <style>
 h1{
 	text-transform:uppercase;
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="../../jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
-<script src="../../jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
-<script src="../../jquery.ex-code-prettify/behave/behave.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/behave/behave.js"></script>
 <script>
 jQuery(function($){
 	$('textarea.code').exCodePrettify({
@@ -49,7 +46,7 @@ jQuery(function($){
 
 	<div class="container">
 		<div class="page-header">
-			<h1>Mailto <small>:: jQuery SiteKit</small></h1>
+			<h1>Picasa Zoom <small>:: jQuery SiteKit</small></h1>
 		</div>
 	</div>
 
@@ -62,45 +59,28 @@ jQuery(function($){
 http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
 </textarea>
 <textarea class="code" data-ex-code-prettify-param="{codeType:'jsFile'}">
-jquery.mailto.js
+jquery.picasa-zoom.js
 </textarea>
 <textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
-<div class="form-group">
-	<label>TO</label>
-	<input class="to form-control" type="text" value="hoge.to@fuga.co.jp"/>
+<div class="picasa">
+	<img src="https://lh3.googleusercontent.com/-G6nLtMfbiLo/U5MsQOqfOLI/AAAAAAAAHVM/IVpWzJbVhZI/s144/IMG_1768.png"/><br/>
+	<img src="https://lh5.googleusercontent.com/-HjW5BtRndxo/U5Mtx986zuI/AAAAAAAAHVM/g8wmIHNOpmY/s144/IMG_1721.png"/><br/>
+	<img src="https://lh5.googleusercontent.com/-7cggVHG-i74/U5M05ee0DAI/AAAAAAAAHWA/iM3hb0gONVc/s144/IMG_1727.png"/><br/>
+	<img src="https://lh4.googleusercontent.com/-HyoeaZmlLck/U5MyUWu3PmI/AAAAAAAAHVM/Ut5IQY6XSaY/s144/IMG_1723.png"/><br/>
+	<img src="https://lh3.googleusercontent.com/-Nk3__sXwt8Y/U5MyYeD-nsI/AAAAAAAAHVM/FaYDjxmgTdw/s144/IMG_1739.png"/><br/>
+	<img src="https://lh4.googleusercontent.com/-E-GSa8wymBs/U5MzX0_5G7I/AAAAAAAAHVM/S2igEXSg8nU/s144/IMG_1778.png"/><br/>
 </div>
-<div class="form-group">
-	<label>CC</label>
-	<input class="cc form-control" type="text" value="hoge.cc@fuga.co.jp"/>
-</div>
-<div class="form-group">
-	<label>BCC</label>
-	<input class="bcc form-control" type="text" value="hoge.bcc@fuga.co.jp"/>
-</div>
-<div class="form-group">
-	<label>TITLE</label>
-	<input class="title form-control" type="text" value="テストメール"/>
-</div>
-<div class="form-group">
-	<label>MESSAGE</label>
-	<textarea class="message form-control" rows="5"/>
-</div>
-<button class="send btn btn-primary">SEND</button>
 </textarea>
 <textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
-$('textarea.message').val('こんにちわ\nテストメールです！');
-
-$('button.send').on('click', function(){
-	$.mailto.call({
-		to : $('input.to').val(),
-		cc : $('input.cc').val(),
-		bcc : $('input.bcc').val(),
-		subject : $('input.title').val(),
-		body : $('textarea.message').val()
-	});
-});
+$('div.picasa img').picasaZoom();
 </textarea>
 <textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+div.picasa img{
+	max-width:100%;
+}
+a.picasa-zoom:hover img{
+	opacity:0.5;
+}
 </textarea>
 			</div>
 		</div>

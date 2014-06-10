@@ -1,5 +1,5 @@
 /*
- * 	Mailto 0.1 - jQuery plugin
+ * 	Mailto 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -12,10 +12,9 @@
  *	http://jquery.com
  *
  */
-
 ;(function($){
 	$.mailto = function(option){
-		var s = arguments.callee, c = $.extend({}, s.defaults, option);
+		var s = arguments.callee, c = s.config = $.extend({}, s.defaults, option);
 		var qs = '';
 		$.each(c, function(i){
 			var v = c[i];
@@ -24,7 +23,15 @@
 		return 'mailto:' + c.to + qs;
 	}
 	$.mailto.call = function(option){
-		location.href = $.mailto(option);
+		var url = $.mailto(option);
+		var s = arguments.callee, c = $.mailto.config;
+		if(c.callFromIFrame){
+			s.iframe = s.iframe || $('<iframe/>').hide().appendTo('body');
+			s.iframe.prop('src', url);
+		}
+		else{
+			location.href = url;
+		}
 	}
 	$.fn.mailto = function(option){
 		return this.each(function(){
@@ -36,7 +43,7 @@
 		cc : '',
 		bcc : '',
 		subject : '',
-		body : ''
+		body : '',
+		callFromIFrame : true
 	}
-
 })(jQuery);
