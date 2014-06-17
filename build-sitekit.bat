@@ -6,6 +6,9 @@ REM     REM type go-top/jquery.go-top.js >> jquery.sitekit.js
 type nul > jquery.sitekit.js
 type nul > jquery.sitekit.css
 
+REM jquery.picasa-zoom
+type picasa-zoom\jquery.picasa-zoom.js >> jquery.sitekit.js
+
 REM jquery.mailto
 type mailto\jquery.mailto.js >> jquery.sitekit.js
 

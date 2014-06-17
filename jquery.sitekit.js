@@ -1,5 +1,5 @@
 /*
- * 	Mailto 0.1 - jQuery plugin
+ * 	Picasa Zoom 0.1 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -12,10 +12,46 @@
  *	http://jquery.com
  *
  */
-
+;(function($){
+	var plugin = $.fn.picasaZoom = function( option ){
+		var c = $.extend({}, plugin.defaults, option );
+		var target = this;
+		var link = target.wrap('<a href="javascript:void(0)" class="picasa-zoom"/>').parent();
+		link.on('click', function(){
+			var img = $(this).find('img').css('opacity', 0.5);
+			var size = [c.thumKey, c.pictKey];
+			var src = img.prop('src');
+			size = (src.search(size[0]) < 0) ? size.reverse() : size;
+			var src = img.prop('src').replace(size[0], size[1]);
+			var dummy = $('<img/>').on('load', function(){
+				img.prop('src', src).css('opacity', 1).hide().fadeIn();
+				dummy.remove();
+			}).prop('src',src);
+		});
+		return target;
+	}
+	plugin.defaults = {
+		thumKey : '/s144/',
+		pictKey : '/s800/',
+	}
+})(jQuery);
+/*
+ * 	Mailto 0.2 - jQuery plugin
+ *	written by cyokodog
+ *
+ *	Copyright (c) 2014 cyokodog 
+ *		http://www.cyokodog.net/
+ *		http://d.hatena.ne.jp/cyokodog/)
+ *		http://cyokodog.tumblr.com/
+ *	MIT LICENCE
+ *
+ *	Built for jQuery library
+ *	http://jquery.com
+ *
+ */
 ;(function($){
 	$.mailto = function(option){
-		var s = arguments.callee, c = $.extend({}, s.defaults, option);
+		var s = arguments.callee, c = s.config = $.extend({}, s.defaults, option);
 		var qs = '';
 		$.each(c, function(i){
 			var v = c[i];
@@ -24,7 +60,15 @@
 		return 'mailto:' + c.to + qs;
 	}
 	$.mailto.call = function(option){
-		location.href = $.mailto(option);
+		var url = $.mailto(option);
+		var s = arguments.callee, c = $.mailto.config;
+		if(c.callFromIFrame){
+			s.iframe = s.iframe || $('<iframe/>').hide().appendTo('body');
+			s.iframe.prop('src', url);
+		}
+		else{
+			location.href = url;
+		}
 	}
 	$.fn.mailto = function(option){
 		return this.each(function(){
@@ -36,12 +80,12 @@
 		cc : '',
 		bcc : '',
 		subject : '',
-		body : ''
+		body : '',
+		callFromIFrame : true
 	}
-
 })(jQuery);
 /*
- * 	Easy Social Buttons 0.1.1 - jQuery plugin
+ * 	Easy Social Buttons 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -94,7 +138,7 @@
 				'googleplus' : 'G+'
 			}
 		},
-		version : '0.1.1',
+		version : '0.2',
 		id : 'easy-social-buttons',
 		name : 'Easy Social Buttons'
 	});
@@ -164,16 +208,13 @@
 			overwrite : {
 				hatebu : {
 					entryTitle : 'ブックマークする'
-				},
-				googleplus : {
-					tempalte : '<span class="esb"><a class="esb-label esb-entry" target="_blank"></a></span>'
 				}
 			}
 		});
 	});
 })(jQuery);
 /*
- * 	Social Info 0.1 - jQuery plugin
+ * 	Social Info 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -217,7 +258,10 @@
 			twitter : {
 				entryCount : {}
 			}
-		}
+		},
+		version : '0.2',
+		id : 'social-info',
+		name : 'Social Info'
 	}
 
 
@@ -284,6 +328,25 @@
 	}
 
 	$.si.googleplus = {
+		getEntryCount : function( url , callback){
+			var arg = $.si.reArg(url, callback)
+			$.ajax({
+				type: "get",
+				dataType: "xml",
+				url: "http://query.yahooapis.com/v1/public/yql",
+				data: {
+					q: "SELECT content FROM data.headers WHERE url='https://plusone.google.com/_/+1/fastbutton?hl=ja&url=" + arg.url + "' and ua='#Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36'",
+					format: "xml",
+					env: "http://datatables.org/alltables.env"
+				},
+				success: function (data) {
+					var content = $(data).find("content").text();
+					var match = content.match(/window\.__SSR[\s*]=[\s*]{c:[\s*](\d+)/i);
+					var count = (match != null) ? match[1] : 0;
+					arg.callback(count);
+				}
+			});
+		},
 		getEntryUrl : function( url ){
 			url = url || location.href;
 			return 'https://plus.google.com/share?url=' + encodeURIComponent(url);
