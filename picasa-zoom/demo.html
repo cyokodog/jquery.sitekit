@@ -10,17 +10,31 @@ h1{
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://cyokodog.github.io/jquery.hash-contents/jquery.hash-contents.js"></script>
 <script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
 <script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
 <script src="http://cyokodog.github.io/jquery.ex-code-prettify/behave/behave.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
 <script>
 jQuery(function($){
-	$('textarea.code').exCodePrettify({
-		tabToSpace : true,
-		showDemo : true,
-		editCode : true,
-		behaveJS : true
+
+	$('div.demo').hashContents({
+		useCookie : true,
+		reloadHashChange : true,
+		idPrefix : 'Demo',
+		listTo : 'ul.demo-index',
+		activeTitleTo : 'span.demo-title',
+		onActive : function(api){
+			$('div.demo textarea.code').exCodePrettify({
+				tabToSpace : true,
+				showDemo : true,
+				editCode : true,
+				behaveJS : true
+			});
+		}
 	});
+
 });
 </script>
 </head>
@@ -47,12 +61,28 @@ jQuery(function($){
 	<div class="container">
 		<div class="page-header">
 			<h1>Picasa Zoom <small>:: jQuery SiteKit</small></h1>
+			<div class="btn-group demo-index-group pull-right">
+				<button type="button" class="btn btn-default" data-toggle="dropdown">
+					<span>DEMO</span>
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="dropdown">
+					<span class="demo-title"></span><!-- <span class="caret"></span>-->
+				</button>
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu demo-index" role="menu">
+				</ul>
+			</div>
+
 		</div>
 	</div>
 
 	<div class="container">
 
 		<div class="demo">
+			<h3>Picasa の画像を拡大／縮小する</h3>
+
 			<div class="ex-code-prettify demo-right">
 <textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
 /* bootstrap を非適用にしたい場合は以下を削除してください */
@@ -84,6 +114,91 @@ a.picasa-zoom:hover img{
 </textarea>
 			</div>
 		</div>
+
+
+
+
+
+
+
+		<div class="demo">
+			<h3>Picasa の画像を拡大／縮小する（サイズ指定）</h3>
+
+			<div class="ex-code-prettify demo-top">
+<textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
+/* bootstrap を非適用にしたい場合は以下を削除してください */
+http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'jsFile'}">
+jquery.picasa-zoom.js
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
+<div class="picasa">
+	<img src="https://lh3.googleusercontent.com/-G6nLtMfbiLo/U5MsQOqfOLI/AAAAAAAAHVM/IVpWzJbVhZI/s288/IMG_1768.png"/><br/>
+	<img src="https://lh5.googleusercontent.com/-HjW5BtRndxo/U5Mtx986zuI/AAAAAAAAHVM/g8wmIHNOpmY/s288/IMG_1721.png"/><br/>
+	<img src="https://lh5.googleusercontent.com/-7cggVHG-i74/U5M05ee0DAI/AAAAAAAAHWA/iM3hb0gONVc/s288/IMG_1727.png"/><br/>
+	<img src="https://lh4.googleusercontent.com/-HyoeaZmlLck/U5MyUWu3PmI/AAAAAAAAHVM/Ut5IQY6XSaY/s288/IMG_1723.png"/><br/>
+	<img src="https://lh3.googleusercontent.com/-Nk3__sXwt8Y/U5MyYeD-nsI/AAAAAAAAHVM/FaYDjxmgTdw/s288/IMG_1739.png"/><br/>
+	<img src="https://lh4.googleusercontent.com/-E-GSa8wymBs/U5MzX0_5G7I/AAAAAAAAHVM/S2igEXSg8nU/s288/IMG_1778.png"/><br/>
+</div>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('div.picasa img').picasaZoom({
+	thumKey : '/s288/',
+	pictKey : '/s640/'
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+div.picasa img{
+	max-width:100%;
+}
+a.picasa-zoom:hover img{
+	opacity:0.5;
+}
+</textarea>
+			</div>
+		</div>
+
+
+
+
+
+		<div class="demo">
+			<h3>Picasa 以外の画像を拡大／縮小する</h3>
+
+			<div class="ex-code-prettify demo-right">
+<textarea class="code" data-ex-code-prettify-param="{codeType:'cssFile'}">
+/* bootstrap を非適用にしたい場合は以下を削除してください */
+http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'jsFile'}">
+jquery.picasa-zoom.js
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
+<div class="no-picasa">
+	<img src="img/thum/img01.jpg"/><br/>
+	<img src="img/thum/img02.jpg"/><br/>
+	<img src="img/thum/img03.jpg"/><br/>
+</div>
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'script'}">
+$('div.no-picasa img').picasaZoom({
+	thumKey : '/img/thum/',
+	pictKey : '/img/'
+});
+</textarea>
+<textarea class="code" data-ex-code-prettify-param="{codeType:'css'}">
+div.no-picasa img{
+	max-width:100%;
+}
+a.picasa-zoom:hover img{
+	opacity:0.5;
+}
+</textarea>
+			</div>
+		</div>
+
+
 	</div>
 </body>
 </html>
