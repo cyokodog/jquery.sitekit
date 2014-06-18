@@ -1,0 +1,26 @@
+a.picasa-zoom{
+	position:relative;
+}
+span.picasa-zoom-icon{
+	padding:2px 0;
+	width:16px;
+	line-height:1;
+	font-size:12px;
+	position:absolute;
+	bottom:0;
+	right:0;
+	text-align:center;
+	background:#aaa;
+	color:#fff;
+}
+a.picasa-zoom:hover img{
+	opacity:0.5;
+}
+a.picasa-zoom:hover span.picasa-zoom-icon{
+	background:#000;
+}
+a.picasa-zoom img{
+	max-width:100%;
+}
+
+
