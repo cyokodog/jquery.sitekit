@@ -1,5 +1,6 @@
 a.picasa-zoom{
 	position:relative;
+	max-width:100%;
 }
 span.picasa-zoom-icon{
 	padding:2px 0;
@@ -13,14 +14,14 @@ span.picasa-zoom-icon{
 	background:#aaa;
 	color:#fff;
 }
-a.picasa-zoom:hover img{
-	opacity:0.5;
-}
 a.picasa-zoom:hover span.picasa-zoom-icon{
 	background:#000;
 }
 a.picasa-zoom img{
 	max-width:100%;
+}
+a.picasa-zoom:hover img{
+	opacity:0.5;
 }
 
 
