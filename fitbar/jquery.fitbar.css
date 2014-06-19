@@ -1,0 +1,11 @@
+.fitbar-fixed{
+	position:fixed;
+	z-index:99999;
+}
+.fitbar-shadow{
+	background:#000;
+	opacity:0.7;
+	position:fixed;
+	width:100%;
+	left:0;
+}
