@@ -1,5 +1,5 @@
 /*
- * 	Fitbar 0.0 - jQuery plugin
+ * 	Fitbar 0.1 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -17,7 +17,7 @@
 		var o = this, c = o.config = $.extend({}, s.defaults, option);
 		c.target = $(target);
 		c.blank = $('<div/>').addClass(s.id + '-blank').insertAfter(c.target).hide();
-		if(c.showShadow) c.shadow = $('<div/>').addClass(s.id + '-shadow').css(c.position, 0).hide().appendTo('body');
+		if(c.shadow) c._shadow = $('<div/>').addClass(s.id + '-shadow').css(c.position, 0).hide().appendTo('body');
 		c._win = $(window)
 			.on('scroll', function(){o.adjustPosition();})
 			.on('resize', function(){o.adjustPosition();});
@@ -35,9 +35,9 @@
 				targetBottom : offset.top + el.outerHeight(),
 			}
 			sts.scrollBottom = sts.scrollTop + sts.windowHeight;
-			sts.isTopOut = sts.scrollTop >= sts.targetTop - parseInt(el.css('margin-top'));
+			sts.isTopOut = sts.scrollTop >= sts.targetTop
 			sts.isTopOutAll = sts.scrollTop >= sts.targetBottom;
-			sts.isBottomOut = sts.scrollBottom <= sts.targetBottom + parseInt(el.css('margin-bottom'));
+			sts.isBottomOut = sts.scrollBottom <= sts.targetBottom;
 			sts.isBottomOutAll = sts.scrollBottom <= sts.targetTop;
 			return sts;
 		},
@@ -57,24 +57,26 @@
 			c.target.css(c.position, 0);
 			c.target.addClass(s.id + '-fixed');
 			c.target.width(sts.targetWidth);
-			!c.shadow || c.shadow.show().height(c.target.outerHeight());
+			!c._shadow || c._shadow.show().height(c.target.outerHeight());
 		},
 		unFixed : function(){
 			var o = this, c = o.config;
 			c.target.removeClass(s.id + '-fixed');
 			c.target.width('auto');
 			c.blank.hide();
-			!c.shadow || c.shadow.hide();
+			!c._shadow || c._shadow.hide();
 		},
 		adjustPosition : function(){
 			var o = this, c = o.config;
-			var margin = {
-				'margin-top':c.target.css('margin-top'),
-				'margin-bottom':c.target.css('margin-bottom')
-			};
-			c.blank.css(margin)
-			!c.shadow || c.shadow.css(margin);
 			var isFixed = c.target.hasClass(s.id + '-fixed');
+			if(!isFixed){
+				var margin = {
+					'margin-top':c.target.css('margin-top'),
+					'margin-bottom':c.target.css('margin-bottom')
+				};
+				c.blank.css(margin)
+				!c._shadow || c._shadow.css(margin);
+			}
 			var sts = o.getViewStatus(isFixed ? c.blank : c.target);
 			if(c.effect){
 				var prop = (c.position == 'top'? 'isTopOutAll' : 'isBottomOutAll');
@@ -82,7 +84,7 @@
 					if(!isFixed){
 						o.fixed(sts);
 						o.slideIn(c.target);
-						!c.showShadow || o.slideIn(c.shadow);
+						!c.shadow || o.slideIn(c._shadow);
 					}
 				}
 				else{
@@ -116,8 +118,8 @@
 	}
 	$.extend(s, {
 		defaults : {
-			position : 'bottom',
-			showShadow : true,
+			position : 'top',
+			shadow : true,
 			effect : true
 		},
 		id : 'fitbar'
