@@ -1,5 +1,139 @@
 /*
- * 	Picasa Zoom 0.1 - jQuery plugin
+ * 	Fitbar 0.1 - jQuery plugin
+ *	written by cyokodog
+ *
+ *	Copyright (c) 2014 cyokodog 
+ *		http://www.cyokodog.net/
+ *		http://d.hatena.ne.jp/cyokodog/)
+ *		http://cyokodog.tumblr.com/
+ *	MIT LICENCE
+ *
+ *	Built for jQuery library
+ *	http://jquery.com
+ *
+ */
+;(function($){
+	var s = $.fitbar = function(target, option){
+		var o = this, c = o.config = $.extend({}, s.defaults, option);
+		c.target = $(target);
+		c.blank = $('<div/>').addClass(s.id + '-blank').insertAfter(c.target).hide();
+		if(c.shadow) c._shadow = $('<div/>').addClass(s.id + '-shadow').css(c.position, 0).hide().appendTo('body');
+		c._win = $(window)
+			.on('scroll', function(){o.adjustPosition();})
+			.on('resize', function(){o.adjustPosition();});
+		setTimeout(function(){o.adjustPosition();},0);
+	}
+	$.extend($.fitbar.prototype, {
+		getViewStatus : function(el){
+			var o = this, c = o.config;
+			var offset = el.offset();
+			var sts = {
+				scrollTop : c._win.scrollTop(),
+				windowHeight : c._win.height(),
+				targetWidth : el.width(),
+				targetTop : offset.top,
+				targetBottom : offset.top + el.outerHeight(),
+			}
+			sts.scrollBottom = sts.scrollTop + sts.windowHeight;
+			sts.isTopOut = sts.scrollTop >= sts.targetTop
+			sts.isTopOutAll = sts.scrollTop >= sts.targetBottom;
+			sts.isBottomOut = sts.scrollBottom <= sts.targetBottom;
+			sts.isBottomOutAll = sts.scrollBottom <= sts.targetTop;
+			return sts;
+		},
+		slideIn : function(el){
+			var o = this, c = o.config;
+			var prop = {};
+			prop[c.position] = - el.outerHeight();
+			el.css(prop);
+			setTimeout(function(){
+				prop[c.position] = 0;
+				el.animate(prop,1000)
+			},100);
+		},
+		fixed : function(sts){
+			var o = this, c = o.config;
+			c.blank.show().height(c.target.outerHeight());
+			c.target.css(c.position, 0);
+			c.target.addClass(s.id + '-fixed');
+			c.target.removeClass(s.id + '-none-fixed');
+			c.target.width(c.blank.width());
+			!c._shadow || c._shadow.show().height(c.target.outerHeight());
+		},
+		unFixed : function(){
+			var o = this, c = o.config;
+			c.target.removeClass(s.id + '-fixed');
+			c.target.addClass(s.id + '-none-fixed');
+			c.target.width('auto');
+			c.blank.hide();
+			!c._shadow || c._shadow.hide();
+		},
+		adjustPosition : function(){
+			var o = this, c = o.config;
+			var isFixed = c.target.hasClass(s.id + '-fixed');
+			if(!isFixed){
+				var margin = {
+					'margin-top':c.target.css('margin-top'),
+					'margin-bottom':c.target.css('margin-bottom'),
+					'margin-right':c.target.css('margin-right'),
+					'margin-left':c.target.css('margin-left')
+				};
+				c.blank.css(margin)
+				!c._shadow || c._shadow.css(margin);
+			}
+			else{
+				c.target.width(c.blank.width());
+			}
+			var sts = o.getViewStatus(isFixed ? c.blank : c.target);
+			if(c.effect){
+				var prop = (c.position == 'top'? 'isTopOutAll' : 'isBottomOutAll');
+				if(sts[prop]){
+					if(!isFixed){
+						o.fixed(sts);
+						o.slideIn(c.target);
+						!c.shadow || o.slideIn(c._shadow);
+					}
+				}
+				else{
+					if(isFixed){
+						var prop = (c.position == 'top'? 'isTopOut' : 'isBottomOut');
+						if(!sts[prop]){
+							o.unFixed();
+						}
+					}
+				}
+			}
+			else{
+				var prop = (c.position == 'top'? 'isTopOut' : 'isBottomOut');
+				if(sts[prop]){
+					if(!isFixed){
+						o.fixed(sts);
+					}
+				}
+				else{
+					if(isFixed){
+						o.unFixed();
+					}
+				}
+			}
+		}
+	});
+	$.fn.fitbar = function(option){
+		return this.each(function(){
+			$(this).data(s.id, new $.fitbar(this, option));
+		});
+	}
+	$.extend(s, {
+		defaults : {
+			position : 'top',
+			shadow : true,
+			effect : true
+		},
+		id : 'fitbar'
+	});
+})(jQuery);
+/*
+ * 	Picasa Zoom 0.2 - jQuery plugin
  *	written by cyokodog
  *
  *	Copyright (c) 2014 cyokodog 
@@ -14,23 +148,29 @@
  */
 ;(function($){
 	var plugin = $.fn.picasaZoom = function( option ){
-		var c = $.extend({}, plugin.defaults, option );
-		var target = this;
-		var link = target.wrap('<a href="javascript:void(0)" class="picasa-zoom"/>').parent();
-		link.on('click', function(){
-			var img = $(this).find('img').css('opacity', 0.5);
-			var size = [c.thumKey, c.pictKey];
-			var src = img.prop('src');
-			size = (src.search(size[0]) < 0) ? size.reverse() : size;
-			var src = img.prop('src').replace(size[0], size[1]);
-			var dummy = $('<img/>').on('load', function(){
-				img.prop('src', src).css('opacity', 1).hide().fadeIn();
-				dummy.remove();
-			}).prop('src',src);
+		return this.each(function(){
+			var c = $.extend({}, plugin.defaults, option );
+			var target = $(this);
+			var link = target.wrap('<a href="javascript:void(0)" class="picasa-zoom"/>').parent();
+			var disp = target.css('display');
+			link.css({'display': (disp += (disp == 'inline' ? '-block' : ''))});
+			!c.useIcon || (c.icon = $('<span class="picasa-zoom-icon">+</span>').appendTo(link));
+			link.on('click', function(){
+				var img = $(this).find('img').css('opacity', 0.5);
+				var size = [c.thumKey, c.pictKey];
+				var src = img.prop('src');
+				size = (src.search(size[0]) < 0) ? size.reverse() : size;
+				src = img.prop('src').replace(size[0], size[1]);
+				var dummy = $('<img/>').on('load', function(){
+					img.prop('src', src).css('opacity', 1).hide().fadeIn();
+					dummy.remove();
+				}).prop('src',src);
+				!c.icon || c.icon.text(c.icon.text() == '+' ? '-' : '+');
+			});
 		});
-		return target;
 	}
 	plugin.defaults = {
+		useIcon : true,
 		thumKey : '/s144/',
 		pictKey : '/s800/',
 	}
