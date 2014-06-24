@@ -56,12 +56,14 @@
 			c.blank.show().height(c.target.outerHeight());
 			c.target.css(c.position, 0);
 			c.target.addClass(s.id + '-fixed');
-			c.target.width(sts.targetWidth);
+			c.target.removeClass(s.id + '-none-fixed');
+			c.target.width(c.blank.width());
 			!c._shadow || c._shadow.show().height(c.target.outerHeight());
 		},
 		unFixed : function(){
 			var o = this, c = o.config;
 			c.target.removeClass(s.id + '-fixed');
+			c.target.addClass(s.id + '-none-fixed');
 			c.target.width('auto');
 			c.blank.hide();
 			!c._shadow || c._shadow.hide();
@@ -72,10 +74,15 @@
 			if(!isFixed){
 				var margin = {
 					'margin-top':c.target.css('margin-top'),
-					'margin-bottom':c.target.css('margin-bottom')
+					'margin-bottom':c.target.css('margin-bottom'),
+					'margin-right':c.target.css('margin-right'),
+					'margin-left':c.target.css('margin-left')
 				};
 				c.blank.css(margin)
 				!c._shadow || c._shadow.css(margin);
+			}
+			else{
+				c.target.width(c.blank.width());
 			}
 			var sts = o.getViewStatus(isFixed ? c.blank : c.target);
 			if(c.effect){

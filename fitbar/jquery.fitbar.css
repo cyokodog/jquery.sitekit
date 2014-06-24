@@ -1,8 +1,15 @@
+.fitbar-blank{
+}
 .fitbar-fixed{
 	margin-top:0!important;
 	margin-bottom:0!important;
 	position:fixed;
 	z-index:99999;
+}
+.fitbar-blank,
+.fitbar-fixed,
+.fitbar-none-fixed{
+	clear:both;
 }
 .fitbar-shadow{
 	margin-top:0!important;
