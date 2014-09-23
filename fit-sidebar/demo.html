@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Fit Sidebar | jQuery Plugin :: Demo</title>
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link href="jquery.fit-sidebar.css" rel="stylesheet" type="text/css" media="screen" >
+<link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
+<style>
+h1{
+	text-transform:uppercase;
+}
+.page-body{
+	margin-top:80px;
+	position:relative;
+}
+.page-body h4{
+	text-align:center;
+	color:#ff5577;
+}
+.section{
+	overflow:hidden;
+}
+.page-footer{
+	background:#aaccff;
+	height:600px;
+}
+div.ex-code-prettify{
+	margin:0 16px;
+}
+.sub .contents,
+.sub{
+	background:#ddeeff;
+}
+.main .contents,
+.main{
+	background:#eeffee;
+}
+.ext .contents,
+.ext{
+	background:#eeeeff;
+}
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://cyokodog.github.io/jquery.hash-contents/jquery.hash-contents.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
+<script src="jquery.fit-sidebar.js"></script>
+<script>
+jQuery(function($){
+	$('div.demo').hashContents({
+		effect : false,
+		useCookie : true,
+		reloadHashChange : true,
+		idPrefix : 'Demo',
+		listTo : 'ul.demo-index',
+		activeTitleTo : 'span.demo-title',
+		onActive : function(api){
+			$('textarea.layout').exCodePrettify();
+			$('div.demo textarea.code').exCodePrettify({
+				showDemo : true
+			});
+		}
+	});
+});
+</script>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-topx" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://www.cyokodog.net/blog/fit-sidebar-doc/" target="_blank"><span class="glyphicon glyphicon-book"></span> Document</a></li>
+					<li><a href="https://github.com/cyokodog/jquery.sitekit" target="_blank"><b class="glyphicon glyphicon-download-alt"></b> Download</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Fit Sidebar <small>:: jQuery SiteKit</small></h1>
+			<p class="lead">$( div.side-contents ).fitSidebar({<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;wrapper : 'div.wrapper',&nbsp;&nbsp;&nbsp;&nbsp;responsiveWidth : 800<br/>
+			})</p>
+			<div class="btn-group demo-index-group pull-right">
+				<button type="button" class="btn btn-default" data-toggle="dropdown">
+					<span>DEMO</span>
+				</button>
+				<button type="button" class="btn btn-default" data-toggle="dropdown">
+					<span class="demo-title"></span><!-- <span class="caret"></span>-->
+				</button>
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu demo-index" role="menu">
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+<div class="page-body">
+	<div class="main section">
+		<h4>main</h4>
+		<div class="contents">
+
+
+
+
+
+
+<div class="ex-code-prettify">
+<textarea class="layout code html" data-ex-code-prettify-param="{codeType:'html',title:'This Page Layout'}">
+<div class="page-header"></div>
+<div class="page-body">
+	<div class="main section">
+		<div class="contents"></div>
+	</div>
+	<div class="sub section">
+		<div class="contents"></div>
+	</div>
+	<div class="ext section">
+		<div class="contents"></div>
+	</div>
+</div>
+<div class="page-footer"></div>
+</textarea>
+</div>
+<br/>
+
+<!-- demo -->
+			<div class="demo">
+				<h4>2カラムでサイドバーを固定(main &gt; sub)</h4>
+				<div class="ex-code-prettify demo-bottom">
+
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html',title:'Dummy Text'}">
+<p class="dummy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</textarea>
+<textarea class="code script" data-ex-code-prettify-param="{codeType:'script'}">
+//dummy text
+for(i=0; i<30; i++) $('.dummy:eq(0)').clone().insertAfter('.dummy:eq(0)');
+
+//fitSidebar
+$('.sub .contents').fitSidebar({
+	wrapper : 'div.page-body'
+,	responsiveWidth : 800
+});
+</textarea>
+<textarea class="code css" data-ex-code-prettify-param="{codeType:'css'}">
+/* ext カラムは非表示 */
+.ext{
+	display:none;
+}
+/* 800px でレスポンシブ */
+@media ( min-width : 800px ){
+	.main{
+		display:inline-block;
+		vertical-align:top;
+		width:75%;
+	}
+	.sub{
+		display:inline-block;
+		vertical-align:top;
+		width:25%;
+	}
+}
+</textarea>
+				</div>
+			</div>
+<!-- demo -->
+
+
+
+<!-- demo -->
+			<div class="demo">
+				<h4>2カラムでサイドバーを固定(main &lt; sub)</h4>
+				<div class="ex-code-prettify demo-bottom">
+<textarea class="code script" data-ex-code-prettify-param="{codeType:'script'}">
+//fitSidebar
+$('.sub .contents').fitSidebar({
+	wrapper : 'div.page-body'
+,	responsiveWidth : 800
+});
+</textarea>
+<textarea class="code css" data-ex-code-prettify-param="{codeType:'css'}">
+/* ext カラムは非表示 */
+.ext{
+	display:none;
+}
+/* 800px でレスポンシブ */
+@media ( min-width : 800px ){
+	.main{
+		display:inline-block;
+		vertical-align:top;
+		width:75%;
+	}
+	.sub{
+		display:inline-block;
+		vertical-align:top;
+		width:25%;
+	}
+}
+</textarea>
+				</div>
+			</div>
+<!-- demo -->
+
+
+
+
+
+
+
+<!-- demo -->
+			<div class="demo">
+				<h4>2カラムで両カラムを固定(main &lt; sub)</h4>
+				<div class="ex-code-prettify demo-bottom">
+<textarea class="code script" data-ex-code-prettify-param="{codeType:'script'}">
+//fitSidebar
+$('.main .contents, .sub .contents').fitSidebar({
+	wrapper : 'div.page-body'
+,	responsiveWidth : 800
+});
+</textarea>
+<textarea class="code css" data-ex-code-prettify-param="{codeType:'css'}">
+/* ext カラムは非表示 */
+.ext{
+	display:none;
+}
+/* 800px でレスポンシブ */
+@media ( min-width : 800px ){
+	.main{
+		display:inline-block;
+		vertical-align:top;
+		width:75%;
+	}
+	.sub{
+		display:inline-block;
+		vertical-align:top;
+		width:25%;
+	}
+}
+</textarea>
+				</div>
+			</div>
+<!-- demo -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- demo -->
+			<div class="demo">
+				<h4>3カラムでサイドバーを固定(main &gt; ext &gt; sub)</h4>
+				<div class="ex-code-prettify demo-bottom">
+
+<textarea class="code html" data-ex-code-prettify-param="{codeType:'html',title:'Dummy Text'}">
+<p class="dummy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</textarea>
+<textarea class="code script" data-ex-code-prettify-param="{codeType:'script'}">
+//dummy text
+for(i=0; i<30; i++) $('.dummy:eq(0)').clone().insertAfter('.dummy:eq(0)');
+
+//fitSidebar
+$('.sub .contents, .ext .contents').fitSidebar({
+	wrapper : 'div.page-body'
+,	responsiveWidth : 800
+});
+</textarea>
+<textarea class="code css" data-ex-code-prettify-param="{codeType:'css'}">
+/* 800px でレスポンシブ */
+@media ( min-width : 800px ){
+	.main{
+		display:inline-block;
+		vertical-align:top;
+		width:50%;
+	}
+	.sub,
+	.ext{
+		display:inline-block;
+		vertical-align:top;
+		width:25%;
+	}
+}
+</textarea>
+				</div>
+			</div>
+<!-- demo -->
+
+
+
+
+
+
+
+
+
+<!-- demo -->
+			<div class="demo">
+				<h4>3カラムでサイドバーを固定(main &lt; sub &lt; ext)</h4>
+				<div class="ex-code-prettify demo-bottom">
+
+<textarea class="code script" data-ex-code-prettify-param="{codeType:'script'}">
+//fitSidebar
+$('.sub .contents, .ext .contents').fitSidebar({
+	wrapper : 'div.page-body'
+,	responsiveWidth : 800
+});
+</textarea>
+<textarea class="code css" data-ex-code-prettify-param="{codeType:'css'}">
+/* 800px でレスポンシブ */
+@media ( min-width : 800px ){
+	.main{
+		display:inline-block;
+		vertical-align:top;
+		width:50%;
+	}
+	.sub,
+	.ext{
+		display:inline-block;
+		vertical-align:top;
+		width:25%;
+	}
+}
+</textarea>
+				</div>
+			</div>
+<!-- demo -->
+
+
+
+
+
+<!-- demo -->
+			<div class="demo">
+				<h4>3カラムで全カラムを固定(main &lt; sub &lt; ext)</h4>
+				<div class="ex-code-prettify demo-bottom">
+
+<textarea class="code script" data-ex-code-prettify-param="{codeType:'script'}">
+//fitSidebar
+$('.main .contents, .sub .contents, .ext .contents').fitSidebar({
+	wrapper : 'div.page-body'
+,	responsiveWidth : 800
+});
+</textarea>
+<textarea class="code css" data-ex-code-prettify-param="{codeType:'css'}">
+/* 800px でレスポンシブ */
+@media ( min-width : 800px ){
+	.main{
+		display:inline-block;
+		vertical-align:top;
+		width:50%;
+	}
+	.sub,
+	.ext{
+		display:inline-block;
+		vertical-align:top;
+		width:25%;
+	}
+}
+</textarea>
+				</div>
+			</div>
+<!-- demo -->
+
+
+
+
+
+
+
+		</div>
+	</div><!--
+	--><div class="sub section">
+		<h4>sub</h4>
+		<div class="contents">
+<h4>TENNIS Ranking</h4>
+<ul>
+<li>Djokovic, Novak</li>
+<li>Nadal, Rafael</li>
+<li>Federer, Roger</li>
+<li>Wawrinka, Stan</li>
+<li>Ferrer, David</li>
+<li>Raonic, Milos</li>
+<li>Berdych, Tomas</li>
+<li>Nishikori, Kei</li>
+<li>Cilic, Marin</li>
+<li>Dimitrov, Grigor</li>
+<li>Tsonga, Jo-Wilfried</li>
+<li>Murray, Andy</li>
+<li>Gulbis, Ernests</li>
+<li>Del Potro, Juan Martin</li>
+<li>Bautista Agut, Roberto</li>
+<li>Isner, John</li>
+<li>Fognini, Fabio</li>
+<li>Monfils, Gael</li>
+<li>Anderson, Kevin</li>
+<li>Lopez, Feliciano</li>
+<li>Gasquet, Richard</li>
+<li>Robredo, Tommy</li>
+<li>Dolgopolov, Alexandr</li>
+<li>Kohlschreiber, Philipp</li>
+<li>Mayer, Leonardo</li>
+<li>Simon, Gilles</li>
+<li>Rosol, Lukas</li>
+<li>Almagro, Nicolas</li>
+<li>Benneteau, Julien</li>
+<li>Karlovic, Ivo</li>
+<li>Youzhny, Mikhail</li>
+<li>Garcia-Lopez, Guillermo</li>
+<li>Giraldo, Santiago</li>
+<li>Verdasco, Fernando</li>
+<li>Chardy, Jeremy</li>
+<li>Thiem, Dominic</li>
+<li>Lu, Yen-Hsun</li>
+<li>Cuevas, Pablo</li>
+<li>Sousa, Joao</li>
+<li>Janowicz, Jerzy</li>
+<li>Haas, Tommy</li>
+<li>Stepanek, Radek</li>
+<li>Pospisil, Vasek</li>
+<li>Andujar, Pablo</li>
+<li>Goffin, David</li>
+<li>Granollers, Marcel</li>
+<li>Johnson, Steve</li>
+<li>Seppi, Andreas</li>
+<li>Hewitt, Lleyton</li>
+<li>Young, Donald</li>
+<li>Kyrgios, Nick</li>
+<li>Querrey, Sam</li>
+<li>Gabashvili, Teymuraz</li>
+</ul>
+		</div>
+	</div><!--
+	--><div class="ext section">
+		<h4>ext</h4>
+		<div class="contents">
+<h4>FIFA Ranking</h4>
+<ul>
+<li>Brazil</li>
+<li>Germany</li>
+<li>Italy</li>
+<li>Argentina</li>
+<li>Spain</li>
+<li>England</li>
+<li>France</li>
+<li>Netherlands</li>
+<li>Uruguay</li>
+<li>Sweden</li>
+<li>Russia</li>
+<li>Serbia</li>
+<li>Mexico</li>
+<li>Belgium</li>
+<li>Poland</li>
+<li>Hungary</li>
+<li>Portugal</li>
+<li>Czech Republic</li>
+<li>Austria</li>
+<li>Chile</li>
+<li>Switzerland</li>
+<li>Paraguay</li>
+<li>USA</li>
+<li>Romania</li>
+<li>Denmark</li>
+<li>Korea Republic</li>
+<li>Croatia</li>
+<li>Colombia</li>
+<li>Costa Rica</li>
+<li>Scotland</li>
+<li>Cameroon</li>
+<li>Nigeria</li>
+<li>Bulgaria</li>
+<li>Turkey</li>
+<li>Japan</li>
+<li>Ghana</li>
+<li>Peru</li>
+<li>Republic of Ireland</li>
+<li>Northern Ireland</li>
+<li>Ecuador</li>
+<li>Algeria</li>
+<li>Ivory Coast</li>
+<li>South Africa</li>
+<li>Morocco</li>
+<li>Norway</li>
+<li>Australia</li>
+<li>Senegal</li>
+<li>German DR</li>
+<li>Greece</li>
+<li>Saudi Arabia</li>
+<li>Ukraine</li>
+<li>Tunisia</li>
+<li>Wales</li>
+<li>Iran</li>
+<li>Cuba</li>
+<li>Slovakia</li>
+<li>Slovenia</li>
+<li>Korea DPR</li>
+<li>Bosnia and Heregovina</li>
+<li>Jamaica</li>
+<li>New Zealand</li>
+<li>Honduras</li>
+<li>Angola</li>
+<li>Israel</li>
+<li>Egypt</li>
+<li>Kuwait</li>
+<li>Trinidad and Tobago</li>
+<li>Bolivia</li>
+<li>Indonesia</li>
+<li>Iraq</li>
+<li>Togo</li>
+<li>Canada</li>
+<li>United Arab Emirates</li>
+<li>China PR</li>
+<li>Haiti</li>
+<li>Congo DR</li>
+<li>El Salvador</li>
+</ul>
+		</div>
+	</div>
+</div>
+<div class="page-footer"></div>
+</body>
+</html>

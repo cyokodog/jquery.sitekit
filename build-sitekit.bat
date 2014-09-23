@@ -6,6 +6,10 @@ REM     REM type go-top/jquery.go-top.js >> jquery.sitekit.js
 type nul > jquery.sitekit.js
 type nul > jquery.sitekit.css
 
+REM jquery.fit-sidebar
+type fitbar\jquery.fit-sidebar.js >> jquery.sitekit.js
+type fitbar\jquery.fit-sidebar.css >> jquery.sitekit.css
+
 REM jquery.fitbar
 type fitbar\jquery.fitbar.js >> jquery.sitekit.js
 type fitbar\jquery.fitbar.css >> jquery.sitekit.css

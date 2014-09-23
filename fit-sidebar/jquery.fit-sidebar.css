@@ -1,0 +1,11 @@
+/* fit-sidebar */
+.fit-sidebar-fixed{
+	margin-top:0!important;
+	margin-bottom:0!important;
+	position:fixed;
+}
+.fit-sidebar-blank{
+	z-index:0;
+	background-color:transparent;
+	visibility:hidden;
+}
