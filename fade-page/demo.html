@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Fage Page | jQuery Plugin :: Demo</title>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" >
+<link href="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.css" rel="stylesheet" type="text/css" media="screen" >
+<link href="jquery.fade-page.css" rel="stylesheet" type="text/css" media="screen" >
+<style>
+body{
+	margin-bottom:320px;
+}
+h1{
+	text-transform:uppercase;
+}
+div.images{
+	margin:32px;
+	text-align:center;
+	height:288px;
+}
+div.images a{
+	border:solid 4px #aaccff;
+	display:inline-block;
+	vertical-align:top;
+}
+div.images a:hover{
+	border:solid 4px #00aaff;
+}
+div.images img{
+	width:144px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/google-code-prettify/prettify.js"></script>
+<script src="http://cyokodog.github.io/jquery.ex-code-prettify/jquery.ex-code-prettify.js"></script>
+
+<script>
+//modify parameter
+/*
+$.fadePage = {
+	autoRun : true,
+	fadeInSpeed : 3000
+};
+*/
+</script>
+<script src="jquery.fade-page.js"></script>
+<script>
+jQuery(function($){
+	var img = $('div.images img');
+	img.each(function(i){
+		var t = $(this);
+		t.wrap($('<a/>').prop('href', '?'+i));
+		if(location.search.replace('?','') == i){
+			t.width(288);
+		}
+	});
+	$('textarea.code').exCodePrettify();
+});
+</script>
+</head>
+<body>
+	<div class="navbar navbar-default" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://www.cyokodog.net/blog/fade-page-doc/" target="_blank"><span class="glyphicon glyphicon-book"></span> Document</a></li>
+					<li><a href="https://github.com/cyokodog/jquery.sitekit" target="_blank"><b class="glyphicon glyphicon-download-alt"></b> Download</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Fade Page <small>:: jQuery SiteKit</small></h1>
+		</div>
+	</div>
+
+	<div class="container">
+
+
+
+<!-- Demo ------------------------------------------------------------>
+		<div class="demo">
+			<div class="images">
+				<img src="https://lh5.googleusercontent.com/-0o8SupONtrQ/U855hAJiAKI/AAAAAAAAHj8/68vLsgG7sxE/s288/IMG_1941.png"/>
+				<img src="https://lh4.googleusercontent.com/-1Ns-uI5ALZ4/U76_PKQxKkI/AAAAAAAAHfg/yJL4V1dhGXk/s288/IMG_1925.png"/>
+				<img src="https://lh5.googleusercontent.com/-X6unJ7NMA58/VBcUzgvLsWI/AAAAAAAAH3Y/_lKaVNqQKMc/s288/IMG_2136.png"/>
+
+			</div>
+			<div class="ex-code-prettify demo-top">
+<textarea class="code" data-ex-code-prettify-param="{codeType:'html'}">
+<link href="jquery.fade-page.css" rel="stylesheet" type="text/css" media="screen" >
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="jquery.fade-page.js"></script>
+</textarea>
+			</div>
+		</div>
+<!-- Demo ------------------------------------------------------------>
+
+	</div>
+
+
+</body>
+</html>
