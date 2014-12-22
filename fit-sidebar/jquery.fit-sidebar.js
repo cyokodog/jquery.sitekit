@@ -32,7 +32,7 @@
 			'padding-bottom' : c.target.css('padding-bottom'),
 			'padding-left' : c.target.css('padding-left')
 		});
-		c.wrapper = $(c.wrapper);
+		c.wrapper = $(c.target).parents(c.wrapper);
 		c._win = $(window)
 			.on('scroll', function(){
 				o.adjustPosition();
